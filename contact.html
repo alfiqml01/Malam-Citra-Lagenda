@@ -373,13 +373,23 @@
       box-shadow: 0 20px 48px rgba(0,0,0,0.45);
     }
     .committee-avatar {
-      width: 72px; height: 72px;
+      width: 96px; height: 96px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--crimson-deep), var(--dark-mid));
-      border: 2px solid var(--border-gold);
-      margin: 0 auto 14px;
+      border: 2px solid var(--gold);
+      margin: 0 auto 16px;
       display: flex; align-items: center; justify-content: center;
       font-size: 2rem;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 0 0 3px rgba(201,168,76,0.15);
+    }
+    .committee-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
     }
     .committee-name {
       font-family: var(--font-heading);
@@ -518,7 +528,9 @@
 
       <div class="committee-grid">
         <div class="committee-card reveal">
-          <div class="committee-avatar">👔</div>
+          <div class="committee-avatar">
+            <img src="images/Mohd Saifollizam Rustam.jpg" alt="Mohd Saifollizam Bin Rustam">
+          </div>
           <div class="committee-name">Mohd Saifollizam Bin Rustam</div>
           <div class="committee-role">PENGARAH PROGRAM</div>
           <div class="committee-dept"></div>
@@ -529,7 +541,9 @@
         </div>
 
         <div class="committee-card reveal delay-1">
-          <div class="committee-avatar">📝</div>
+          <div class="committee-avatar">
+            <img src="images/Nur Faiqah Inani Md Liza.jpg" alt="Nur Faiqah Inani Binti Md Liza">
+          </div>
           <div class="committee-name">Nur Faiqah Inani Binti Md Liza</div>
           <div class="committee-role">SETIAUSAHA</div>
           <div class="committee-dept"></div>
@@ -540,7 +554,9 @@
         </div>
 
         <div class="committee-card reveal delay-2">
-          <div class="committee-avatar">💰</div>
+          <div class="committee-avatar">
+            <img src="images/Shaflie Nurazuan Abu Bakar.jpg" alt="Shaflie Nurazuan Bin Abu Bakar">
+          </div>
           <div class="committee-name">Shaflie Nurazuan Bin Abu Bakar</div>
           <div class="committee-role">BENDAHARI</div>
           <div class="committee-dept"></div>
@@ -551,9 +567,11 @@
         </div>
 
         <div class="committee-card reveal delay-3">
-          <div class="committee-avatar">🍽️</div>
+          <div class="committee-avatar">
+            <img src="images/Wan Mohd Fazrul Wan Yusoff.jpg" alt="Wan Mohd Fazrul Bin Wan Yusoff">
+          </div>
           <div class="committee-name">Wan Mohd Fazrul Bin Wan Yusoff</div>
-          <div class="committee-role">AJK PROTOKOL, JEMPUTAN & AKTIVITI</div>
+          <div class="committee-role">AJK PROTOKOL, JEMPUTAN &amp; AKTIVITI</div>
           <div class="committee-dept"></div>
           <div class="committee-contact">
             <a href="tel:+60112345684"></a>
@@ -562,9 +580,11 @@
         </div>
 
         <div class="committee-card reveal">
-          <div class="committee-avatar">✨</div>
+          <div class="committee-avatar">
+            <img src="images/Wan Nor Azura Wan Muda.jpg" alt="Wan Nor Azura Binti Wan Muda">
+          </div>
           <div class="committee-name">Wan Nor Azura Binti Wan Muda</div>
-          <div class="committee-role">AJK TEMPAT & HIASAN</div>
+          <div class="committee-role">AJK TEMPAT &amp; HIASAN</div>
           <div class="committee-dept"></div>
           <div class="committee-contact">
             <a href="tel:+60112345684"></a>
@@ -573,7 +593,9 @@
         </div>
 
         <div class="committee-card reveal delay-1">
-          <div class="committee-avatar">🎁</div>
+          <div class="committee-avatar">
+            <img src="images/Nurul Syakirin Ismail.jpg" alt="Nurul Syakirin Binti Ismail">
+          </div>
           <div class="committee-name">Nurul Syakirin Binti Ismail</div>
           <div class="committee-role">AJK HADIAH</div>
           <div class="committee-dept"></div>
@@ -584,7 +606,9 @@
         </div>
 
         <div class="committee-card reveal delay-2">
-          <div class="committee-avatar">🎥</div>
+          <div class="committee-avatar">
+            <img src="images/Mohd Alif Nurfahmi Saad.jpg" alt="Muhammad Alif Iqmal Mahadzir">
+          </div>
           <div class="committee-name">Muhammad Alif Iqmal Mahadzir</div>
           <div class="committee-role">AJK SIARAYA / MULTIMEDIA</div>
           <div class="committee-dept"></div>
@@ -595,9 +619,11 @@
         </div>
 
         <div class="committee-card reveal delay-3">
-          <div class="committee-avatar">🛡️</div>
-          <div class="committee-name">---</div>
-          <div class="committee-role">AJK Keselamatan & Kebajikan</div>
+          <div class="committee-avatar" style="background:linear-gradient(135deg,var(--crimson-deep),var(--dark-mid)); font-size:2.4rem; color:var(--gold);">
+            🛡️
+          </div>
+          <div class="committee-name">—</div>
+          <div class="committee-role">AJK KESELAMATAN &amp; KEBAJIKAN</div>
           <div class="committee-dept"></div>
           <div class="committee-contact">
             <a href="tel:+60112345684"></a>

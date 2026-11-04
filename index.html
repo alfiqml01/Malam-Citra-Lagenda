@@ -1,0 +1,1080 @@
+﻿<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Citra Lagenda — Malam COC 2026</title>
+  <meta name="description" content="Malam COC 2026 — Citra Lagenda. Tema: Melayu Klasik (Bangsawan). Jumaat, 20 November 2026 | 7:30 PM | IDEAS Hotel Kuala Lumpur." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── TICKER ─────────────────────────────────────────── */
+    .ticker-bar { position: relative; z-index: 300; }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 160px 32px 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(26,10,0,0.55)   0%,
+          rgba(107,0,0,0.45)  40%,
+          rgba(26,10,0,0.85)  80%,
+          rgba(26,10,0,1)    100%),
+        linear-gradient(135deg, #6B0000 0%, #2D1000 50%, #8B0000 100%);
+      z-index: 0;
+    }
+    /* Decorative arch/palace SVG background */
+    .hero-arch {
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: min(900px, 100%);
+      opacity: 0.12;
+      z-index: 1;
+      pointer-events: none;
+    }
+    /* Floating gold orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.25) 0%, transparent 70%);
+      pointer-events: none;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-orb-1 { width: 400px; height: 400px; top: -80px; left: -80px; animation-delay: 0s; }
+    .hero-orb-2 { width: 300px; height: 300px; top: 20%; right: -60px; animation-delay: 2s; }
+    .hero-orb-3 { width: 200px; height: 200px; bottom: 20%; left: 10%; animation-delay: 4s; }
+    /* Gold curtain lines */
+    .hero-curtain {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, var(--gold), transparent);
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .hero-curtain-l { left: 8%; }
+    .hero-curtain-r { right: 8%; }
+
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+    .hero-eyebrow {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.6rem;
+      opacity: 0.7;
+    }
+    /* Star ornament top */
+    .hero-star {
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+      animation: float 4s ease-in-out infinite;
+      filter: drop-shadow(0 4px 12px rgba(201,168,76,0.6));
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--gold-light);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      text-shadow:
+        0 0 60px rgba(201,168,76,0.4),
+        0 4px 24px rgba(0,0,0,0.8);
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #F5E4B8 0%, #E8C97A 30%, #C9A84C 60%, #F5E4B8 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+    .hero-subtitle {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      color: var(--ivory);
+      margin-bottom: 6px;
+      opacity: 0.9;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+    .hero-theme {
+      font-family: var(--font-heading);
+      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+    /* Gold divider line */
+    .hero-divider {
+      width: 160px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 36px;
+    }
+    .hero-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+    .hero-info-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      color: var(--text-on-dark);
+    }
+    .hero-info-item .icon {
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: float 2s ease-in-out infinite;
+    }
+    .hero-scroll span {
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* ── COUNTDOWN ───────────────────────────────────────── */
+    .countdown-section {
+      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
+      padding: 72px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .countdown-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L43 18 L54 18 L45 25 L48 36 L40 28 L32 36 L35 25 L26 18 L37 18 Z' fill='%23C9A84C' fill-opacity='0.03'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .countdown-title {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      text-align: center;
+      min-width: 110px;
+    }
+    .countdown-box {
+      background: linear-gradient(180deg, rgba(45,16,0,0.8) 0%, rgba(26,10,0,0.9) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 24px 20px 18px;
+      position: relative;
+      overflow: hidden;
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+    .countdown-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .countdown-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      color: var(--gold-light);
+      line-height: 1;
+      text-shadow: 0 2px 16px rgba(201,168,76,0.5);
+    }
+    .countdown-sep {
+      font-family: var(--font-display);
+      font-size: 2.8rem;
+      color: var(--gold);
+      opacity: 0.4;
+      align-self: flex-start;
+      padding-top: 24px;
+      line-height: 1;
+    }
+    .countdown-label {
+      font-family: var(--font-heading);
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+    .countdown-date-note {
+      text-align: center;
+      margin-top: 32px;
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+    .countdown-date-note strong {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+
+    /* ── WARKAH / POEM SECTION ───────────────────────────── */
+    .warkah-section {
+      background: linear-gradient(135deg, var(--dark-mid) 0%, var(--crimson-deep) 50%, var(--dark-mid) 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .warkah-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 L53 22 L65 22 L55 30 L59 42 L50 34 L41 42 L45 30 L35 22 L47 22 Z' fill='%23C9A84C' fill-opacity='0.04'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+    .warkah-card {
+      max-width: 680px;
+      margin: 0 auto;
+      background: rgba(26,10,0,0.6);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      padding: 60px 56px;
+      text-align: center;
+      position: relative;
+      backdrop-filter: blur(12px);
+    }
+    .warkah-card::before,
+    .warkah-card::after {
+      content: '❧';
+      position: absolute;
+      font-size: 2rem;
+      color: var(--gold);
+      opacity: 0.4;
+    }
+    .warkah-card::before { top: 20px; left: 28px; }
+    .warkah-card::after  { bottom: 20px; right: 28px; transform: scaleX(-1); }
+    .warkah-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .warkah-body {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text-on-dark);
+      line-height: 2;
+    }
+    .warkah-body p { margin-bottom: 20px; }
+    .warkah-body strong {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      font-style: normal;
+      display: block;
+      margin: 24px 0 16px;
+    }
+    .warkah-sign {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin-top: 28px;
+    }
+
+    /* ── HIGHLIGHTS ──────────────────────────────────────── */
+    .highlights-section {
+      background: var(--dark);
+      padding: 100px 0;
+    }
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    /* ── DRESS CODE ──────────────────────────────────────── */
+    .dresscode-section {
+      background: linear-gradient(180deg, var(--dark-mid) 0%, var(--crimson-deep) 100%);
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .dresscode-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .dresscode-card {
+      background: rgba(26,10,0,0.55);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 40px 36px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .dresscode-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 56px rgba(0,0,0,0.5);
+    }
+    .dresscode-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .dresscode-gender {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .dresscode-tagline {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+    .dresscode-list {
+      list-style: none;
+      padding: 0;
+    }
+    .dresscode-list li {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-on-dark);
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      line-height: 1.5;
+    }
+    .dresscode-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 0.5rem;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .dresscode-list li:last-child { border-bottom: none; }
+    .dresscode-note {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: 20px;
+      padding: 14px 16px;
+      background: rgba(201,168,76,0.05);
+      border-left: 2px solid var(--gold);
+      border-radius: 4px;
+    }
+
+    /* ── PROGRAMME TEASER ────────────────────────────────── */
+    .programme-section {
+      background: var(--dark);
+      padding: 100px 0;
+    }
+    .programme-timeline {
+      margin-top: 56px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .programme-timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      padding: 0 0 36px 0;
+      position: relative;
+    }
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-deep));
+      border: 2px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(201,168,76,0.5);
+    }
+    .timeline-content {
+      padding-top: 6px;
+      flex: 1;
+    }
+    .timeline-time {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .timeline-event {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      color: var(--ivory);
+      margin-bottom: 4px;
+    }
+    .timeline-desc {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ── CTA BANNER ──────────────────────────────────────── */
+    .cta-section {
+      background: 
+        linear-gradient(135deg, rgba(139,0,0,0.9), rgba(26,10,0,0.95)),
+        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 12L65 30H84L69 41L75 59L60 48L45 59L51 41L36 30H55Z' fill='%23C9A84C' fill-opacity='0.06'/%3E%3C/svg%3E") repeat;
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before,
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      background: linear-gradient(to right, var(--border-gold), transparent);
+      opacity: 0.3;
+    }
+    .cta-section::before { left: 0; }
+    .cta-section::after  { right: 0; transform: scaleX(-1); }
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      color: var(--gold-light);
+      text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+      margin-bottom: 12px;
+    }
+    .cta-sub {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-on-dark);
+      margin-bottom: 40px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .dresscode-grid  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .highlights-grid { grid-template-columns: 1fr; }
+      .warkah-card { padding: 40px 28px; }
+      .hero { padding: 140px 20px 80px; }
+      .countdown-grid { gap: 10px; }
+      .countdown-unit { min-width: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOUNCEMENT TICKER
+  ══════════════════════════════════════════════════ -->
+  <div class="ticker-bar">
+    <div class="ticker-label">📢 Terkini</div>
+    <div class="ticker-wrap">
+      <div class="ticker-content" id="tickerContent">
+        <span>Pendaftaran RSVP dibuka — daftarkan diri anda sekarang!</span>
+        <span>Tarikh: Jumaat, 20 November 2026 | Masa: 7:30 Malam</span>
+        <span>Tempat: IDEAS Hotel Kuala Lumpur</span>
+        <span>Tema: Melayu Klasik (Bangsawan) — Hadir dengan pakaian tradisional Melayu</span>
+        <span>Kod Pakaian: Baju Melayu Diraja / Kebaya Songket / Baju Kurung Tradisional</span>
+        <span>Hubungi Bentara COC untuk sebarang pertanyaan</span>
+        <span>Pendaftaran RSVP dibuka — daftarkan diri anda sekarang!</span>
+        <span>Tarikh: Jumaat, 20 November 2026 | Masa: 7:30 Malam</span>
+        <span>Tempat: IDEAS Hotel Kuala Lumpur</span>
+        <span>Tema: Melayu Klasik (Bangsawan) — Hadir dengan pakaian tradisional Melayu</span>
+        <span>Kod Pakaian: Baju Melayu Diraja / Kebaya Songket / Baju Kurung Tradisional</span>
+        <span>Hubungi Bentara COC untuk sebarang pertanyaan</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-title">Citra Lagenda</span>
+        <span class="nav-logo-sub">Malam COC 2026</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Laman Utama</a>
+        <a href="eventdetails.html">Butiran Acara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href="contact.html">Hubungi Kami</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn">Daftar Sekarang</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="index.html" class="active">Laman Utama</a>
+      <a href="eventdetails.html">Butiran Acara</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+      <a href="contact.html">Hubungi Kami</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">✦ Daftar Sekarang</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-curtain hero-curtain-l"></div>
+    <div class="hero-curtain hero-curtain-r"></div>
+
+    <!-- Palace arch SVG -->
+    <svg class="hero-arch" viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Main arch -->
+      <path d="M100 500 L100 250 Q100 80 450 80 Q800 80 800 250 L800 500" stroke="#C9A84C" stroke-width="3" fill="none"/>
+      <!-- Inner arch -->
+      <path d="M160 500 L160 270 Q160 140 450 140 Q740 140 740 270 L740 500" stroke="#C9A84C" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <!-- Pillars -->
+      <rect x="88" y="280" width="24" height="220" fill="#C9A84C" opacity="0.5"/>
+      <rect x="788" y="280" width="24" height="220" fill="#C9A84C" opacity="0.5"/>
+      <!-- Pillar decorations -->
+      <rect x="84" y="278" width="32" height="8" rx="4" fill="#C9A84C" opacity="0.6"/>
+      <rect x="84" y="420" width="32" height="8" rx="4" fill="#C9A84C" opacity="0.6"/>
+      <rect x="784" y="278" width="32" height="8" rx="4" fill="#C9A84C" opacity="0.6"/>
+      <rect x="784" y="420" width="32" height="8" rx="4" fill="#C9A84C" opacity="0.6"/>
+      <!-- Top ornament -->
+      <polygon points="450,50 460,75 487,75 465,91 473,116 450,100 427,116 435,91 413,75 440,75" fill="#C9A84C" opacity="0.8"/>
+      <!-- Kerawang decorations on arch -->
+      <circle cx="270" cy="200" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="330" cy="165" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="390" cy="148" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="450" cy="145" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="510" cy="148" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="570" cy="165" r="6" fill="#C9A84C" opacity="0.4"/>
+      <circle cx="630" cy="200" r="6" fill="#C9A84C" opacity="0.4"/>
+    </svg>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow anim-up">Malam COC 2026</div>
+      <span class="hero-star anim-up delay-1">✦</span>
+      <h1 class="hero-title anim-up delay-1">Citra Lagenda</h1>
+      <p class="hero-subtitle anim-up delay-2">Tema: Melayu Klasik</p>
+      <p class="hero-theme anim-up delay-2">Bangsawan &nbsp;✦&nbsp; Keagungan &nbsp;✦&nbsp; Warisan</p>
+      <div class="hero-divider anim-fade delay-2"></div>
+      <div class="hero-info anim-up delay-3">
+        <div class="hero-info-item">
+          <span class="icon">📅</span>
+          <span>Jumaat, 20 November 2026</span>
+        </div>
+        <div class="hero-info-item">
+          <span class="icon">🕖</span>
+          <span>7:30 Malam</span>
+        </div>
+        <div class="hero-info-item">
+          <span class="icon">🏨</span>
+          <span>IDEAS Hotel Kuala Lumpur</span>
+        </div>
+      </div>
+      <div class="hero-actions anim-up delay-4">
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">✦ Daftar Sekarang</a>
+        <a href="eventdetails.html" class="btn btn-outline">Lihat Butiran Acara</a>
+        <a href="eventdetails.html#dresscode" class="btn btn-outline">Panduan Pakaian</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Tatal ke bawah</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       COUNTDOWN
+  ══════════════════════════════════════════════════ -->
+  <section class="countdown-section" id="countdown">
+    <div class="container">
+      <p class="countdown-title">✦ Kiraan Detik Menuju Malam Agung ✦</p>
+      <div class="countdown-grid">
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-days">00</div>
+          </div>
+          <div class="countdown-label">Hari</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-hours">00</div>
+          </div>
+          <div class="countdown-label">Jam</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-mins">00</div>
+          </div>
+          <div class="countdown-label">Minit</div>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-secs">00</div>
+          </div>
+          <div class="countdown-label">Saat</div>
+        </div>
+      </div>
+      <p class="countdown-date-note">
+        <strong>Jumaat, 20 November 2026 &mdash; 7:30 PM</strong><br>
+        IDEAS Hotel Kuala Lumpur
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       WARKAH PEMBUKA TIRAI
+  ══════════════════════════════════════════════════ -->
+  <section class="warkah-section" id="warkah">
+    <div class="container">
+      <div class="warkah-card reveal">
+        <div class="section-label">Warkah Pembuka Tirai</div>
+        <div class="ornament-divider"><span>✦</span></div>
+        <div class="warkah-body">
+          <p>
+            Gunung Ledang berselimut awan,<br>
+            Bunga cempaka di taman sari;<br>
+            Khabar diutus membawa undangan,<br>
+            Seribu pesona bakal berseri.
+          </p>
+          <p>
+            Selendang puteri bersulam suasa,<br>
+            Disapa bayu di puncak tinggi;<br>
+            Di sebalik tirai tersimpan rahsia,<br>
+            Kelak menjelma saat dinanti.
+          </p>
+          <strong>Wahai tuan hamba sekalian…</strong>
+          <p>
+            Dari puncak Ledang khabar dibawa,<br>
+            Meniti bayu menuju persada.<br>
+            Apabila tiba detik nan dinanti,<br>
+            Tersingkaplah pesona legenda bestari…
+          </p>
+          <p style="font-style:italic; color:var(--text-muted); font-size:0.95rem;">
+            Belum tersingkap, sudah mempesona.<br>
+            Belum menjelma, sudah dinanti.
+          </p>
+        </div>
+        <div class="ornament-divider"><span>❧</span></div>
+        <div class="warkah-sign">— Bentara COC —</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       STATS STRIP
+  ══════════════════════════════════════════════════ -->
+  <div class="stats-strip">
+    <div class="container">
+      <div class="grid-4">
+        <div class="stat-item reveal">
+          <div class="stat-number">300<span style="font-size:1.8rem;">+</span></div>
+          <div class="stat-label">Tetamu Jemputan</div>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Persembahan Budaya</div>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Malam Agung</div>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <div class="stat-number">∞</div>
+          <div class="stat-label">Kenangan Abadi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       EVENT HIGHLIGHTS
+  ══════════════════════════════════════════════════ -->
+  <section class="highlights-section" id="highlights">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Keistimewaan Malam</span>
+        <h2 class="section-title">Pengalaman Malam Citra Lagenda</h2>
+        <div class="ornament-divider"><span>✦</span></div>
+        <p class="section-subtitle">
+          Sebuah malam penuh dengan keindahan seni, budaya, dan warisan diraja yang akan memukau setiap tetamu.
+        </p>
+      </div>
+      <div class="highlights-grid">
+        <div class="card reveal">
+          <div class="card-icon">🎭</div>
+          <h3>Persembahan Bangsawan</h3>
+          <p>Saksikan persembahan teater Bangsawan dan tarian klasik Melayu yang menghidupkan semula kegemilangan istana.</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">🍽️</div>
+          <h3>Jamuan Diraja</h3>
+          <p>Nikmati hidangan istimewa berinspirasi masakan tradisional Melayu yang dirangka dengan penuh keanggunan.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="card-icon">🎶</div>
+          <h3>Muzik Gamelan Live</h3>
+          <p>Alunan bunyi gamelan tradisional yang merdu akan mengiringi malam yang penuh dengan nostalgia kerajaan Melayu.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <div class="card-icon">👑</div>
+          <h3>Suasana Istana</h3>
+          <p>Hiasan pentas yang mewah dengan motif ukiran Melayu dan sentuhan emas menciptakan suasana istana yang autentik.</p>
+        </div>
+        <div class="card reveal">
+          <div class="card-icon">🏆</div>
+          <h3>Anugerah &amp; Penghargaan</h3>
+          <p>Majlis pengiktirafan bagi kakitangan cemerlang dan pencapaian bahagian sepanjang tahun.</p>
+        </div>
+        <div class="card reveal delay-1">
+          <div class="card-icon">📸</div>
+          <h3>Galeri Budaya</h3>
+          <p>Sudut bergambar bertema diraja dengan kostum tradisional dan latar belakang istana yang memukau.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <div class="card-icon">🎁</div>
+          <h3>Cabutan Bertuah</h3>
+          <p>Cabutan hadiah istimewa bernilai tinggi untuk para tetamu yang bertuah pada malam yang bersejarah ini.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <div class="card-icon">🌺</div>
+          <h3>Bunga Manggar</h3>
+          <p>Persembahan bunga manggar tradisional sebagai tanda kegembiraan dan kesyukuran sambutan malam agung ini.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       DRESS CODE GUIDE
+  ══════════════════════════════════════════════════ -->
+  <section class="dresscode-section" id="dresscode">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Panduan Pakaian</span>
+        <h2 class="section-title">Kod Pakaian: Melayu Klasik</h2>
+        <div class="ornament-divider"><span>👑</span></div>
+        <p class="section-subtitle">
+          Hadirlah dengan memakai pakaian tradisional Melayu yang menjadi lambang keagungan dan keindahan warisan bangsa.
+        </p>
+      </div>
+      <div class="dresscode-grid">
+        <!-- Lelaki -->
+        <div class="dresscode-card reveal-left">
+          <div style="font-size:2.5rem; margin-bottom:12px;">👘</div>
+          <div class="dresscode-gender">Lelaki</div>
+          <div class="dresscode-tagline">Wira Diraja — Baju Melayu Bersampin</div>
+          <ul class="dresscode-list">
+            <li>Baju Melayu Cekak Musang / Teluk Belanga</li>
+            <li>Sampin songket atau sampin sutera</li>
+            <li>Songkok atau tengkolok tradisional</li>
+            <li>Seluar panjang berpadanan</li>
+            <li>Kasut kulit atau kasut tradisional</li>
+            <li>Aksesori: Pending, rantai emas, keris (hiasan)</li>
+          </ul>
+          <div class="dresscode-note">
+            Warna pilihan: Merah diraja, hijau zamrud, biru diraja, hitam emas, atau kombinasi emas.
+          </div>
+        </div>
+        <!-- Wanita -->
+        <div class="dresscode-card reveal-right">
+          <div style="font-size:2.5rem; margin-bottom:12px;">👗</div>
+          <div class="dresscode-gender">Wanita</div>
+          <div class="dresscode-tagline">Puteri Diraja — Kebaya &amp; Songket</div>
+          <ul class="dresscode-list">
+            <li>Kebaya labuh songket atau baju kurung tradisional</li>
+            <li>Kain batik songket / kain tenun</li>
+            <li>Selendang sutera atau selendang songket</li>
+            <li>Aksesori emas: pending, cucuk sanggul, rantai</li>
+            <li>Kasut bertumit rendah / kasut tradisional</li>
+            <li>Sanggul atau coiffure tradisional Melayu</li>
+          </ul>
+          <div class="dresscode-note">
+            Warna pilihan: Merah, emas, ungu diraja, hijau zamrud, biru laut, atau warna-warna songket klasik.
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:40px;">
+        <a href="eventdetails.html#dresscode" class="btn btn-gold reveal">Lihat Panduan Lengkap ✦</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       PROGRAMME TEASER
+  ══════════════════════════════════════════════════ -->
+  <section class="programme-section" id="programme">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Aturcara Malam</span>
+        <h2 class="section-title">Sekilas Pandang Program</h2>
+        <div class="ornament-divider"><span>✦</span></div>
+        <p class="section-subtitle">
+          Malam yang penuh dengan acara menarik dari saat pertama anda melangkah masuk sehingga tabir malam diturunkan.
+        </p>
+      </div>
+      <div class="programme-timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">🚪</div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:00 PM</div>
+            <div class="timeline-event">Ketibaan &amp; Pendaftaran Tetamu</div>
+            <div class="timeline-desc">Sambutan tetamu, sesi bergambar, dan pengambilan tempat duduk.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot">🎺</div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:30 PM</div>
+            <div class="timeline-event">Perasmian Rasmi</div>
+            <div class="timeline-desc">Ketibaan tetamu kehormat, nyanyian lagu rasmi, dan ucap aluan.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot">🎭</div>
+          <div class="timeline-content">
+            <div class="timeline-time">8:00 PM</div>
+            <div class="timeline-event">Persembahan Pembuka Tirai</div>
+            <div class="timeline-desc">Persembahan tarian Melayu klasik dan Bangsawan oleh kumpulan seni istimewa.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot">🍽️</div>
+          <div class="timeline-content">
+            <div class="timeline-time">8:30 PM</div>
+            <div class="timeline-event">Jamuan Makan Malam Diraja</div>
+            <div class="timeline-desc">Hidangan istimewa berinspirasi masakan diraja Melayu.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">🏆</div>
+          <div class="timeline-content">
+            <div class="timeline-time">9:30 PM</div>
+            <div class="timeline-event">Majlis Anugerah &amp; Penghargaan</div>
+            <div class="timeline-desc">Pengiktirafan kecemerlangan kakitangan sepanjang tahun.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot">🎁</div>
+          <div class="timeline-content">
+            <div class="timeline-time">10:30 PM</div>
+            <div class="timeline-event">Cabutan Bertuah &amp; Hiburan</div>
+            <div class="timeline-desc">Cabutan hadiah bernilai dan persembahan hiburan penutup.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot">🌙</div>
+          <div class="timeline-content">
+            <div class="timeline-time">11:30 PM</div>
+            <div class="timeline-event">Penutup Tirai</div>
+            <div class="timeline-desc">Majlis ditamatkan — Selamat malam dan terima kasih atas kehadiran.</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:56px;">
+        <a href="eventdetails.html" class="btn btn-outline reveal">Aturcara Penuh →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════════════════ -->
+  <section class="cta-section" id="register">
+    <div class="container">
+      <div class="ornament-divider reveal"><span>✦</span></div>
+      <h2 class="cta-title reveal">Jangan Lepaskan Malam Bersejarah Ini</h2>
+      <p class="cta-sub reveal delay-1">
+        Daftarkan diri anda sekarang dan jadilah sebahagian daripada legenda malam yang akan terukir dalam sejarah COC.
+      </p>
+      <div class="cta-actions reveal delay-2">
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">✦ Daftar Sekarang</a>
+        <a href="eventdetails.html" class="btn btn-outline btn-lg">Ketahui Lebih Lanjut</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Hubungi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Citra Lagenda</div>
+      <div class="footer-tagline">Malam COC 2026 &nbsp;✦&nbsp; Melayu Klasik Bangsawan</div>
+      <div class="footer-links">
+        <a href="index.html">Laman Utama</a>
+        <a href="eventdetails.html">Butiran Acara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href="contact.html">Hubungi Kami</a>
+      </div>
+      <div class="footer-copy">
+        <strong>Jumaat, 20 November 2026 &nbsp;|&nbsp; 7:30 PM &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
+        &copy; 2026 Malam COC — Citra Lagenda. Anjuran <strong>Bahagian COC</strong>.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════════ -->
+  <script>
+    // ── Nav scroll ───────────────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Mobile menu ──────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.style.display === 'flex';
+      mobileMenu.style.display = open ? 'none' : 'flex';
+    });
+
+    // ── Countdown Timer ──────────────────────────────
+    const eventDate = new Date('2026-11-20T19:30:00+08:00');
+    function updateCountdown() {
+      const now  = new Date();
+      const diff = eventDate - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent  = '00';
+        document.getElementById('cd-hours').textContent = '00';
+        document.getElementById('cd-mins').textContent  = '00';
+        document.getElementById('cd-secs').textContent  = '00';
+        return;
+      }
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      const mins  = Math.floor((diff % 3600000)  / 60000);
+      const secs  = Math.floor((diff % 60000)    / 1000);
+      document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Scroll-reveal ────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

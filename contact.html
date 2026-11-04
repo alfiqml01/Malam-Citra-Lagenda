@@ -1,0 +1,1151 @@
+﻿<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hubungi Kami — Citra Lagenda Malam COC 2026</title>
+  <meta name="description" content="Hubungi Jawatankuasa Bentara COC untuk sebarang pertanyaan berkaitan Malam COC 2026 — Citra Lagenda." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── CONTACT PAGE-SPECIFIC ─────────────────────── */
+
+    /* ── PIC CARDS ──────────────────────────────────── */
+    .pic-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+    .pic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .pic-card {
+      background: rgba(45,16,0,0.65);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      padding: 40px 32px 36px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .pic-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .pic-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.3);
+      border-color: rgba(201,168,76,0.4);
+    }
+    /* Avatar ring */
+    .pic-avatar-wrap {
+      width: 100px; height: 100px;
+      margin: 0 auto 20px;
+      position: relative;
+    }
+    .pic-avatar-ring {
+      position: absolute; inset: -5px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      background: linear-gradient(135deg, var(--gold), var(--crimson), var(--gold)) border-box;
+      -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      animation: spin-slow 8s linear infinite;
+    }
+    .pic-avatar {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--crimson-deep), var(--dark-mid));
+      border: 2px solid var(--border-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .pic-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    /* Role badge */
+    .pic-role-badge {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--crimson-deep), var(--dark-mid));
+      color: var(--gold);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 999px;
+      padding: 4px 14px;
+      margin-bottom: 10px;
+    }
+    .pic-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+    .pic-title {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+    .pic-divider {
+      width: 48px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 20px;
+    }
+    /* Contact links */
+    .pic-contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .pic-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(26,10,0,0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 10px 16px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background var(--transition), border-color var(--transition), color var(--transition);
+      text-align: left;
+    }
+    .pic-contact-link:hover {
+      background: rgba(201,168,76,0.08);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .pic-contact-link .link-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+    }
+    .pic-contact-link .link-label {
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 1px;
+    }
+    .pic-contact-link .link-value {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: inherit;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* Area of responsibility tag */
+    .pic-scope {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+    .scope-tag {
+      font-family: var(--font-heading);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(201,168,76,0.06);
+      border: 1px solid rgba(201,168,76,0.18);
+      color: var(--text-muted);
+      border-radius: 999px;
+      padding: 3px 10px;
+    }
+
+    /* ── LEAD PIC (featured, larger) ───────────────── */
+    .pic-card.featured {
+      grid-column: span 1;
+      background: linear-gradient(160deg, rgba(107,0,0,0.4), rgba(45,16,0,0.8));
+    }
+    .pic-card.featured .pic-name { font-size: 1.25rem; }
+    .pic-card.featured .pic-avatar { width: 110px; height: 110px; }
+    .pic-card.featured .pic-avatar-wrap { width: 110px; height: 110px; }
+
+    /* ── INQUIRY FORM ───────────────────────────────── */
+    .inquiry-section {
+      background: linear-gradient(180deg, var(--dark-mid) 0%, var(--crimson-deep) 50%, var(--dark-mid) 100%);
+      padding: 80px 0;
+    }
+    .inquiry-layout {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .inquiry-form-card {
+      background: rgba(26,10,0,0.65);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      padding: 48px 44px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+    .inquiry-form-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .inquiry-form-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin-bottom: 6px;
+    }
+    .inquiry-form-sub {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .inquiry-sidebar-card {
+      background: rgba(45,16,0,0.65);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .inquiry-sidebar-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+    .iscard-title {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    /* Office hours */
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--text-muted); }
+    .hours-time {
+      color: var(--gold-light);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+    }
+    .hours-closed { color: rgba(255,100,100,0.7); }
+    /* Quick links */
+    .quick-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(26,10,0,0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-on-dark);
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .quick-link:hover {
+      background: rgba(201,168,76,0.07);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateX(4px);
+    }
+    .quick-link .ql-icon { font-size: 1.1rem; }
+    /* Topic radio */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .topic-option { position: relative; }
+    .topic-option input { position: absolute; opacity:0; width:0; height:0; }
+    .topic-label {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      background: rgba(45,16,0,0.5);
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      transition: all var(--transition);
+    }
+    .topic-label:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .topic-option input:checked + .topic-label {
+      background: rgba(139,0,0,0.3);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    /* Form submit success */
+    .inquiry-success {
+      display: none;
+      text-align: center;
+      padding: 32px 16px;
+    }
+    .inquiry-success.show { display: block; }
+    .inq-success-icon { font-size: 3rem; margin-bottom: 16px; }
+    .inq-success-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .inq-success-sub {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* ── COMMITTEE SECTION ──────────────────────────── */
+    .committee-section {
+      background: var(--dark);
+      padding: 80px 0;
+    }
+    .committee-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 52px;
+    }
+    .committee-card {
+      background: rgba(45,16,0,0.5);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 28px 22px;
+      text-align: center;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .committee-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.45);
+    }
+    .committee-avatar {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--crimson-deep), var(--dark-mid));
+      border: 2px solid var(--border-gold);
+      margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+    }
+    .committee-name {
+      font-family: var(--font-heading);
+      font-size: 0.88rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .committee-role {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    .committee-dept {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .committee-contact {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .committee-contact a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .committee-contact a:hover { color: var(--gold-light); }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .pic-grid        { grid-template-columns: repeat(2, 1fr); }
+      .committee-grid  { grid-template-columns: repeat(2, 1fr); }
+      .inquiry-layout  { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .pic-grid        { grid-template-columns: 1fr; }
+      .committee-grid  { grid-template-columns: 1fr 1fr; }
+      .topic-grid      { grid-template-columns: 1fr; }
+      .inquiry-form-card { padding: 32px 24px; }
+    }
+    @media (max-width: 400px) {
+      .committee-grid  { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════════
+       ANNOUNCEMENT TICKER
+  ══════════════════════════════════════════════════ -->
+  <div class="ticker-bar">
+    <div class="ticker-label">📢 Terkini</div>
+    <div class="ticker-wrap">
+      <div class="ticker-content">
+        <span>Hubungi Bentara COC untuk sebarang pertanyaan berkaitan Malam COC 2026</span>
+        <span>Tarikh akhir RSVP: 30 Oktober 2026</span>
+        <span>Jumaat, 20 November 2026 | 7:30 PM | IDEAS Hotel Kuala Lumpur</span>
+        <span>Tema: Melayu Klasik (Bangsawan) — Hadir dengan pakaian tradisional Melayu</span>
+        <span>Hubungi Bentara COC untuk sebarang pertanyaan berkaitan Malam COC 2026</span>
+        <span>Tarikh akhir RSVP: 30 Oktober 2026</span>
+        <span>Jumaat, 20 November 2026 | 7:30 PM | IDEAS Hotel Kuala Lumpur</span>
+        <span>Tema: Melayu Klasik (Bangsawan) — Hadir dengan pakaian tradisional Melayu</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════
+       NAVIGATION
+  ══════════════════════════════════════════════════ -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="nav-logo-title">Citra Lagenda</span>
+        <span class="nav-logo-sub">Malam COC 2026</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Laman Utama</a>
+        <a href="eventdetails.html">Butiran Acara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href="contact.html" class="active">Hubungi Kami</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn">Daftar Sekarang</a>
+      </div>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobileMenu">
+      <a href="index.html">Laman Utama</a>
+      <a href="eventdetails.html">Butiran Acara</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+      <a href="contact.html" class="active">Hubungi Kami</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">✦ Daftar Sekarang</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════════
+       PAGE HEADER
+  ══════════════════════════════════════════════════ -->
+  <header class="page-header">
+    <div>
+      <p class="page-header-sub anim-up">Bentara COC</p>
+      <h1 class="page-header-title anim-up delay-1">Hubungi Kami</h1>
+      <div class="ornament-divider anim-fade delay-2"><span>✦</span></div>
+      <p class="page-header-desc anim-up delay-2">
+        Kami sedia membantu sebarang pertanyaan. Hubungi Jawatankuasa Bentara COC melalui kaedah di bawah.
+      </p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════
+       PIC — PERSONS IN CHARGE
+  ══════════════════════════════════════════════════ -->
+  <section class="pic-section" id="pic">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Orang yang Boleh Dihubungi</span>
+        <h2 class="section-title">Jawatankuasa Utama Bentara COC</h2>
+        <div class="ornament-divider"><span>👑</span></div>
+        <p class="section-subtitle">
+          Pasukan kami yang berdedikasi sedia membantu anda dari Isnin hingga Jumaat, 9:00 AM – 5:00 PM.
+        </p>
+      </div>
+
+      <div class="pic-grid">
+
+        <!-- PIC 1 — Pengerusi -->
+        <div class="pic-card featured reveal">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👨‍💼</div>
+          </div>
+          <div class="pic-role-badge">✦ Pengerusi Majlis</div>
+          <div class="pic-name">Encik Ahmad Rizal</div>
+          <div class="pic-title">Pegawai Kanan Tadbir &amp; Diplomatik, M54</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345678">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5678</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345678">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6789</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:ahmad.rizal@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">ahmad.rizal@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Keseluruhan Majlis</span>
+            <span class="scope-tag">Protokol</span>
+            <span class="scope-tag">Tetamu VIP</span>
+          </div>
+        </div>
+
+        <!-- PIC 2 — Penyelaras RSVP -->
+        <div class="pic-card reveal delay-1">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👩‍💼</div>
+          </div>
+          <div class="pic-role-badge">Penyelaras RSVP</div>
+          <div class="pic-name">Puan Siti Nabilah</div>
+          <div class="pic-title">Pegawai Tadbir, N41</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345679">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5679</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345679">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6790</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:siti.nabilah@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">siti.nabilah@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Pendaftaran RSVP</span>
+            <span class="scope-tag">Tempat Duduk</span>
+            <span class="scope-tag">Senarai Tetamu</span>
+          </div>
+        </div>
+
+        <!-- PIC 3 — Penyelaras Logistik -->
+        <div class="pic-card reveal delay-2">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👨‍🎨</div>
+          </div>
+          <div class="pic-role-badge">Penyelaras Logistik</div>
+          <div class="pic-name">Encik Hafizuddin</div>
+          <div class="pic-title">Pembantu Tadbir, N27</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345680">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5680</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345680">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6791</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:hafizuddin@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">hafizuddin@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Logistik &amp; Pengangkutan</span>
+            <span class="scope-tag">Venue</span>
+            <span class="scope-tag">Peralatan</span>
+          </div>
+        </div>
+
+        <!-- PIC 4 — Penyelaras Kreatif -->
+        <div class="pic-card reveal">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👩‍🎨</div>
+          </div>
+          <div class="pic-role-badge">Penyelaras Kreatif</div>
+          <div class="pic-name">Cik Nurul Izzati</div>
+          <div class="pic-title">Pegawai Hal Ehwal Awam, S41</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345681">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5681</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345681">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6792</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:nurul.izzati@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">nurul.izzati@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Dekorasi &amp; Tema</span>
+            <span class="scope-tag">Publisiti</span>
+            <span class="scope-tag">Media Sosial</span>
+          </div>
+        </div>
+
+        <!-- PIC 5 — Penyelaras Makanan -->
+        <div class="pic-card reveal delay-1">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👨‍🍳</div>
+          </div>
+          <div class="pic-role-badge">Penyelaras Jamuan</div>
+          <div class="pic-name">Encik Faris Azlan</div>
+          <div class="pic-title">Pembantu Tadbir, N27</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345682">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5682</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345682">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6793</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:faris.azlan@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">faris.azlan@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Menu &amp; Jamuan</span>
+            <span class="scope-tag">Keperluan Pemakanan</span>
+            <span class="scope-tag">Katerer</span>
+          </div>
+        </div>
+
+        <!-- PIC 6 — Penyelaras Persembahan -->
+        <div class="pic-card reveal delay-2">
+          <div class="pic-avatar-wrap">
+            <div class="pic-avatar-ring"></div>
+            <div class="pic-avatar">👩‍🎤</div>
+          </div>
+          <div class="pic-role-badge">Penyelaras Persembahan</div>
+          <div class="pic-name">Puan Azreen Huda</div>
+          <div class="pic-title">Pegawai Kebudayaan, S41</div>
+          <div class="pic-divider"></div>
+          <div class="pic-contacts">
+            <a class="pic-contact-link" href="tel:+60312345683">
+              <span class="link-icon">📞</span>
+              <span>
+                <span class="link-label">Telefon Pejabat</span>
+                <span class="link-value">+603-1234 5683</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="tel:+60112345683">
+              <span class="link-icon">📱</span>
+              <span>
+                <span class="link-label">Telefon Bimbit</span>
+                <span class="link-value">+6011-2345 6794</span>
+              </span>
+            </a>
+            <a class="pic-contact-link" href="mailto:azreen.huda@coc.gov.my">
+              <span class="link-icon">✉️</span>
+              <span>
+                <span class="link-label">E-mel</span>
+                <span class="link-value">azreen.huda@coc.gov.my</span>
+              </span>
+            </a>
+          </div>
+          <div class="pic-scope">
+            <span class="scope-tag">Persembahan Seni</span>
+            <span class="scope-tag">Aturcara Pentas</span>
+            <span class="scope-tag">Artis Jemputan</span>
+          </div>
+        </div>
+
+      </div><!-- /pic-grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       FULL COMMITTEE
+  ══════════════════════════════════════════════════ -->
+  <section class="committee-section" id="committee">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Jawatankuasa Penuh</span>
+        <h2 class="section-title">Ahli Jawatankuasa Bentara COC</h2>
+        <div class="ornament-divider"><span>✦</span></div>
+        <p class="section-subtitle">
+          Setiap ahli jawatankuasa memainkan peranan penting dalam menjayakan Malam COC 2026 — Citra Lagenda.
+        </p>
+      </div>
+
+      <div class="committee-grid">
+        <div class="committee-card reveal">
+          <div class="committee-avatar">📋</div>
+          <div class="committee-name">Encik Zulkifli Hasan</div>
+          <div class="committee-role">Timbalan Pengerusi</div>
+          <div class="committee-dept">Bahagian Pengurusan</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345684">📱 +6011-2345 6784</a>
+            <a href="mailto:zulkifli@coc.gov.my">✉️ zulkifli@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-1">
+          <div class="committee-avatar">💰</div>
+          <div class="committee-name">Puan Rohani Zakaria</div>
+          <div class="committee-role">Penyelaras Kewangan</div>
+          <div class="committee-dept">Bahagian Kewangan</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345685">📱 +6011-2345 6785</a>
+            <a href="mailto:rohani@coc.gov.my">✉️ rohani@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-2">
+          <div class="committee-avatar">🎽</div>
+          <div class="committee-name">Encik Shahril Nizam</div>
+          <div class="committee-role">Penyelaras Pakaian</div>
+          <div class="committee-dept">Bahagian Khidmat Am</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345686">📱 +6011-2345 6786</a>
+            <a href="mailto:shahril@coc.gov.my">✉️ shahril@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-3">
+          <div class="committee-avatar">🏆</div>
+          <div class="committee-name">Puan Haslinda Yusoff</div>
+          <div class="committee-role">Penyelaras Anugerah</div>
+          <div class="committee-dept">Bahagian Sumber Manusia</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345687">📱 +6011-2345 6787</a>
+            <a href="mailto:haslinda@coc.gov.my">✉️ haslinda@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal">
+          <div class="committee-avatar">📸</div>
+          <div class="committee-name">Encik Razif Ramli</div>
+          <div class="committee-role">Penyelaras Dokumentasi</div>
+          <div class="committee-dept">Bahagian ICT</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345688">📱 +6011-2345 6788</a>
+            <a href="mailto:razif@coc.gov.my">✉️ razif@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-1">
+          <div class="committee-avatar">🚌</div>
+          <div class="committee-name">Encik Khairul Anwar</div>
+          <div class="committee-role">Penyelaras Pengangkutan</div>
+          <div class="committee-dept">Bahagian Khidmat Am</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345689">📱 +6011-2345 6789</a>
+            <a href="mailto:khairul@coc.gov.my">✉️ khairul@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-2">
+          <div class="committee-avatar">🎁</div>
+          <div class="committee-name">Puan Noriza Ahmad</div>
+          <div class="committee-role">Penyelaras Cabutan</div>
+          <div class="committee-dept">Bahagian Pentadbiran</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345690">📱 +6011-2345 6790</a>
+            <a href="mailto:noriza@coc.gov.my">✉️ noriza@coc.gov.my</a>
+          </div>
+        </div>
+
+        <div class="committee-card reveal delay-3">
+          <div class="committee-avatar">🛡️</div>
+          <div class="committee-name">Encik Amirulhaq Daud</div>
+          <div class="committee-role">Penyelaras Keselamatan</div>
+          <div class="committee-dept">Bahagian Keselamatan</div>
+          <div class="committee-contact">
+            <a href="tel:+60112345691">📱 +6011-2345 6791</a>
+            <a href="mailto:amirul@coc.gov.my">✉️ amirul@coc.gov.my</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       INQUIRY FORM + SIDEBAR
+  ══════════════════════════════════════════════════ -->
+  <section class="inquiry-section" id="inquiry">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Hantar Pertanyaan</span>
+        <h2 class="section-title">Ada Soalan? Tulis Kepada Kami</h2>
+        <div class="ornament-divider"><span>✉️</span></div>
+        <p class="section-subtitle">
+          Kami akan membalas pertanyaan anda dalam masa <strong style="color:var(--gold-light);">1–2 hari bekerja</strong>.
+        </p>
+      </div>
+
+      <div class="inquiry-layout">
+
+        <!-- Form -->
+        <div class="inquiry-form-card reveal-left">
+          <div id="inquiryFormWrap">
+            <div class="inquiry-form-title">Borang Pertanyaan</div>
+            <div class="inquiry-form-sub">Pilih topik dan huraikan pertanyaan anda dengan jelas.</div>
+
+            <div class="form-group">
+              <label class="form-label">Topik Pertanyaan <span style="color:#ff7070;">*</span></label>
+              <div class="topic-grid" id="topicGroup">
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Pendaftaran RSVP" />
+                  <span class="topic-label">📝 Pendaftaran RSVP</span>
+                </label>
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Kod Pakaian" />
+                  <span class="topic-label">👘 Kod Pakaian</span>
+                </label>
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Tempat &amp; Hala Tuju" />
+                  <span class="topic-label">🏨 Tempat &amp; Hala Tuju</span>
+                </label>
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Aturcara Majlis" />
+                  <span class="topic-label">📋 Aturcara Majlis</span>
+                </label>
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Keperluan Pemakanan" />
+                  <span class="topic-label">🍽️ Keperluan Pemakanan</span>
+                </label>
+                <label class="topic-option">
+                  <input type="radio" name="topic" value="Lain-lain" />
+                  <span class="topic-label">💬 Lain-lain</span>
+                </label>
+              </div>
+              <span class="field-error" id="err-topic" style="display:none;">Sila pilih topik pertanyaan.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group" id="fg-inq-nama">
+                <label class="form-label" for="inq-nama">Nama Penuh <span style="color:#ff7070;">*</span></label>
+                <input type="text" id="inq-nama" class="form-control" placeholder="Nama anda" autocomplete="name" />
+                <span class="field-error">Sila masukkan nama anda.</span>
+              </div>
+              <div class="form-group" id="fg-inq-email">
+                <label class="form-label" for="inq-email">E-mel <span style="color:#ff7070;">*</span></label>
+                <input type="email" id="inq-email" class="form-control" placeholder="emel@coc.gov.my" autocomplete="email" />
+                <span class="field-error">Sila masukkan e-mel yang sah.</span>
+              </div>
+            </div>
+
+            <div class="form-group" id="fg-inq-tel">
+              <label class="form-label" for="inq-tel">No. Telefon</label>
+              <input type="tel" id="inq-tel" class="form-control" placeholder="01X-XXXXXXXX (optional)" autocomplete="tel" />
+            </div>
+
+            <div class="form-group" id="fg-inq-msg">
+              <label class="form-label" for="inq-msg">Pertanyaan / Mesej <span style="color:#ff7070;">*</span></label>
+              <textarea id="inq-msg" class="form-control" placeholder="Tulis pertanyaan anda di sini…" rows="5"></textarea>
+              <span class="field-error">Sila masukkan pertanyaan anda.</span>
+            </div>
+
+            <div style="margin-top:28px;">
+              <button type="button" class="btn btn-gold btn-lg" onclick="submitInquiry()" style="width:100%; justify-content:center;">
+                ✦ Hantar Pertanyaan
+              </button>
+            </div>
+          </div>
+
+          <!-- Success message -->
+          <div class="inquiry-success" id="inquirySuccess">
+            <div class="inq-success-icon">✉️</div>
+            <div class="inq-success-title">Pertanyaan Dihantar!</div>
+            <div class="inq-success-sub" style="margin-bottom:20px;">
+              Terima kasih. Kami akan menghubungi anda dalam masa 1–2 hari bekerja.
+            </div>
+            <div class="ornament-divider"><span>✦</span></div>
+            <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
+              <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer"  class="btn btn-gold btn-sm">Daftar RSVP →</a>
+              <a href="index.html" class="btn btn-outline btn-sm">← Laman Utama</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside>
+          <!-- Office hours -->
+          <div class="inquiry-sidebar-card reveal-right">
+            <div class="iscard-title">🕘 Waktu Bekerja</div>
+            <div class="hours-row">
+              <span class="hours-day">Isnin — Khamis</span>
+              <span class="hours-time">8:00 AM – 5:00 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Jumaat</span>
+              <span class="hours-time">8:00 AM – 3:45 PM</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Sabtu</span>
+              <span class="hours-closed">Tutup</span>
+            </div>
+            <div class="hours-row">
+              <span class="hours-day">Ahad &amp; Cuti Umum</span>
+              <span class="hours-closed">Tutup</span>
+            </div>
+            <p style="font-family:var(--font-sub); font-style:italic; font-size:0.82rem; color:var(--text-muted); margin-top:16px; line-height:1.6;">
+              Kami akan cuba membalas setiap pertanyaan dalam masa <strong style="color:var(--gold);">1–2 hari bekerja</strong>. Untuk urusan segera, sila hubungi PIC secara terus.
+            </p>
+          </div>
+
+          <!-- Quick links -->
+          <div class="inquiry-sidebar-card reveal-right delay-1">
+            <div class="iscard-title">🔗 Pautan Berguna</div>
+            <div class="quick-links">
+              <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="quick-link">
+                <span class="ql-icon">📝</span>Borang Pendaftaran RSVP
+              </a>
+              <a href="eventdetails.html#programme" class="quick-link">
+                <span class="ql-icon">📋</span>Aturcara Penuh Majlis
+              </a>
+              <a href="eventdetails.html#dresscode" class="quick-link">
+                <span class="ql-icon">👘</span>Panduan Kod Pakaian
+              </a>
+              <a href="eventdetails.html#venue" class="quick-link">
+                <span class="ql-icon">🏨</span>Lokasi &amp; Hala Tuju
+              </a>
+              <a href="eventdetails.html#faq" class="quick-link">
+                <span class="ql-icon">❓</span>Soalan Lazim
+              </a>
+            </div>
+          </div>
+
+          <!-- General contact info -->
+          <div class="inquiry-sidebar-card reveal-right delay-2">
+            <div class="iscard-title">📬 Maklumat Umum</div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="font-size:1.1rem; flex-shrink:0; margin-top:3px;">📧</span>
+                <div>
+                  <div style="font-family:var(--font-heading); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">E-mel Umum</div>
+                  <a href="mailto:bentaracoc2026@coc.gov.my" style="font-family:var(--font-body); font-size:0.88rem; color:var(--text-on-dark); text-decoration:none; transition:color var(--transition);" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--text-on-dark)'">bentaracoc2026@coc.gov.my</a>
+                </div>
+              </div>
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="font-size:1.1rem; flex-shrink:0; margin-top:3px;">📍</span>
+                <div>
+                  <div style="font-family:var(--font-heading); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Pejabat</div>
+                  <div style="font-family:var(--font-body); font-size:0.88rem; color:var(--text-on-dark); line-height:1.5;">Bahagian COC<br>Kuala Lumpur, Malaysia</div>
+                </div>
+              </div>
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="font-size:1.1rem; flex-shrink:0; margin-top:3px;">📅</span>
+                <div>
+                  <div style="font-family:var(--font-heading); font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;">Tarikh Akhir RSVP</div>
+                  <div style="font-family:var(--font-body); font-size:0.88rem; color:#ff9090; font-weight:600;">30 Oktober 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════════ -->
+  <section style="background:linear-gradient(135deg, rgba(139,0,0,0.9), rgba(26,10,0,0.97)); padding:80px 0; text-align:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:url(data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8L43 18H54L45 25L48 36L40 28L32 36L35 25L26 18H37Z' fill='%23C9A84C' fill-opacity='0.04'/%3E%3C/svg%3E) repeat; pointer-events:none;"></div>
+    <div class="container" style="position:relative;">
+      <div class="ornament-divider reveal"><span>✦</span></div>
+      <h2 class="section-title reveal" style="margin-top:12px;">Masih Belum Mendaftar?</h2>
+      <p style="font-family:var(--font-sub); font-style:italic; font-size:1.05rem; color:var(--text-on-dark); max-width:500px; margin:16px auto 36px;" class="reveal delay-1">
+        Jangan biarkan peluang ini berlalu. Daftar RSVP anda sebelum 30 Oktober 2026 dan jadikan diri sebahagian daripada legenda malam ini.
+      </p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;" class="reveal delay-2">
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">✦ Daftar RSVP Sekarang</a>
+        <a href="eventdetails.html" class="btn btn-outline btn-lg">Lihat Butiran Acara</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-logo">Citra Lagenda</div>
+      <div class="footer-tagline">Malam COC 2026 &nbsp;✦&nbsp; Melayu Klasik Bangsawan</div>
+      <div class="footer-links">
+        <a href="index.html">Laman Utama</a>
+        <a href="eventdetails.html">Butiran Acara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href="contact.html">Hubungi Kami</a>
+      </div>
+      <div class="footer-copy">
+        <strong>Jumaat, 20 November 2026 &nbsp;|&nbsp; 7:30 PM &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
+        &copy; 2026 Malam COC — Citra Lagenda. Anjuran <strong>Bahagian COC</strong>.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════════ -->
+  <script>
+    // ── Nav scroll ─────────────────────────────────────
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ── Mobile menu ────────────────────────────────────
+    document.getElementById('hamburger').addEventListener('click', () => {
+      const m = document.getElementById('mobileMenu');
+      m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    // ── Scroll-reveal ──────────────────────────────────
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => io.observe(el));
+
+    // ── Inquiry form submit ─────────────────────────────
+    function submitInquiry() {
+      let valid = true;
+
+      // topic
+      const topicChecked = document.querySelector('input[name="topic"]:checked');
+      const errTopic = document.getElementById('err-topic');
+      errTopic.style.display = topicChecked ? 'none' : 'block';
+      if (!topicChecked) valid = false;
+
+      // nama
+      const nama = document.getElementById('inq-nama');
+      const fgNama = document.getElementById('fg-inq-nama');
+      fgNama.classList.toggle('has-error', !nama.value.trim());
+      if (!nama.value.trim()) valid = false;
+
+      // email
+      const email = document.getElementById('inq-email');
+      const fgEmail = document.getElementById('fg-inq-email');
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+      fgEmail.classList.toggle('has-error', !emailOk);
+      if (!emailOk) valid = false;
+
+      // message
+      const msg = document.getElementById('inq-msg');
+      const fgMsg = document.getElementById('fg-inq-msg');
+      fgMsg.classList.toggle('has-error', !msg.value.trim());
+      if (!msg.value.trim()) valid = false;
+
+      if (!valid) return;
+
+      // Show success
+      document.getElementById('inquiryFormWrap').style.display = 'none';
+      document.getElementById('inquirySuccess').classList.add('show');
+      window.scrollTo({ top: document.getElementById('inquiry').offsetTop - 80, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

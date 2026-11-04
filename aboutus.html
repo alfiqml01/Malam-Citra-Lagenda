@@ -1,0 +1,179 @@
+<style>
+.sec-1 { background: #3b1a0a !important; }
+.sec-2 { background: #a32c2c !important; }
+.sec-3 { background: #4b0082 !important; }
+.sec-4 { background: #008080 !important; }
+.sec-5 { background: #d2691e !important; }
+.sec-6 { background: #228b22 !important; }
+.sec-7 { background: #c71585 !important; }
+:root { --brand: #a32c2c; --brand-2: #d2691e; --accent: #ffd700; --brand-shadow: rgba(210,105,30,0.6); }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+* { font-family: 'Inter', sans-serif; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.anim-up { animation: fadeInUp 0.6s ease both; }
+.anim-fade { animation: fadeIn 0.8s ease both; }
+.btn-grad { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.btn-grad:hover { transform: translateY(-2px); box-shadow: 0 12px 28px var(--brand-shadow); }
+.card-lift { transition: transform 0.25s ease, box-shadow 0.25s ease; box-shadow: 0 8px 28px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.12); }
+.card-lift:hover { transform: translateY(-5px); box-shadow: 0 20px 52px rgba(0,0,0,0.38), 0 4px 12px rgba(0,0,0,0.14); }
+</style>
+
+<div class="row sectionBlockLayout sec-1" data-component-theme="portalThemeColor1" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 56px 40px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">About Malam COC</span>
+ <h1 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; color: #fff; margin-bottom: 12px;">Our Legacy</h1>
+ <p style="color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 520px; line-height: 1.7;">Discover the rich heritage and timeless elegance behind Malam COC: Citra Lagenda - Melayu Klasik, our annual corporate dinner celebrating Malay royal traditions with a modern touch.</p>
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-2" data-component-theme="portalThemeColor2" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-6 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 40px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">Our Story</span>
+ <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 16px;">Celebrating Tradition and Excellence</h2>
+ <p style="color: rgba(255,255,255,0.85); line-height: 1.7; padding: 8px 0;">Malam COC is a prestigious annual dinner that honors the spirit of Melayu Klasik, blending the grandeur of traditional Malay royal heritage with the vibrancy of contemporary corporate culture. It is a night where elegance meets legacy, fostering unity and pride among our team.</p>
+ <button class="button1 btn-grad" style="background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; border: none; border-radius: 999px; padding: 14px 36px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 8px; align-self: flex-start;">Learn More</button>
+ </div>
+ <div class="col-md-6 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 40px;">
+ <img style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 56px rgba(0,0,0,0.13);" class="anim-fade" src="https://cdn.hubblecontent.osi.office.net/m365content/publish/cceabfe0-d778-4783-b682-31f99a88a84a/thumbnails/xxlarge.jpg" alt="Malay royal palace interior">
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-3" data-component-theme="portalThemeColor3" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; padding: 64px 40px;">
+ <div style="text-align: center; margin-bottom: 48px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">Our Values</span>
+ <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 12px;">Essence of Melayu Klasik</h2>
+ <p style="color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; line-height: 1.7;">We embrace the principles of dignity, respect, and unity inspired by the Malay royal legacy. Our event reflects these values through every detail, from the decor to the program, creating an atmosphere of grandeur and warmth.</p>
+ </div>
+ <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">👑</div>
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Royal Elegance</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Inspired by the majestic aesthetics of Malay royalty, our event exudes sophistication and grace.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">🤝</div>
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Unity & Camaraderie</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Fostering strong bonds among colleagues through shared celebration and cultural appreciation.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">🎭</div>
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Cultural Heritage</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Honoring the rich traditions and stories of Melayu Klasik through artistic expression and ceremony.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <div style="width: 48px; height: 48px; border-radius: 14px; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">✨</div>
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Excellence & Innovation</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Blending tradition with modern corporate excellence to inspire and motivate our team.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-4" data-component-theme="portalThemeColor4" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-6 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 40px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">Our Team</span>
+ <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 16px;">The People Behind Malam COC</h2>
+ <p style="color: rgba(255,255,255,0.85); line-height: 1.7; padding: 8px 0;">Our dedicated organizing committee brings passion and expertise to ensure every detail reflects the spirit of Melayu Klasik and delivers an unforgettable experience.</p>
+ <button class="button1 btn-grad" style="background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; border: none; border-radius: 999px; padding: 14px 36px; font-weight: 700; font-size: 1rem; cursor: pointer; margin-top: 8px; align-self: flex-start;">Meet the Team</button>
+ </div>
+ <div class="col-md-6 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; padding: 64px 40px;">
+ <img style="width: 100%; height: auto; border-radius: 20px; box-shadow: 0 20px 56px rgba(0,0,0,0.13);" class="anim-fade" src="https://cdn.hubblecontent.msit.osi.office.net/m365content/publish/de06db4a-6064-47ee-b3c6-fa7dd5442858/thumbnails/xxlarge.jpg" alt="Team members collaborating">
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-5" data-component-theme="portalThemeColor5" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; padding: 64px 40px;">
+ <div style="text-align: center; margin-bottom: 48px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">Event Highlights</span>
+ <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 12px;">A Night to Remember</h2>
+ <p style="color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; line-height: 1.7;">From traditional performances to exquisite dining, Malam COC offers a curated experience that honors our cultural roots while celebrating our collective achievements.</p>
+ </div>
+ <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px;">
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Traditional Dance</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Experience the grace and beauty of classical Malay dance performances that tell stories of heritage.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Royal Banquet</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Savor a luxurious menu inspired by royal Malay cuisine, crafted to delight every palate.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Cultural Exhibits</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Explore displays of traditional crafts, textiles, and artifacts that celebrate our rich history.</p>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.70); border-radius: 20px; padding: 32px;">
+ <h3 style="font-size: 1.05rem; font-weight: 700; color: #1a1a1a; margin-bottom: 8px;">Awards & Recognition</h3>
+ <p style="color: #555; line-height: 1.65; margin: 0; font-size: 0.95rem;">Honoring outstanding contributions and celebrating milestones within our corporate family.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-6" data-component-theme="portalThemeColor6" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 72px 48px;">
+ <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; color: #fff; margin-bottom: 16px;">Join Us for Malam COC</h2>
+ <p style="color: rgba(255,255,255,0.85); max-width: 500px; line-height: 1.7; margin-bottom: 36px; padding: 8px 0;">Be part of a night that honors our heritage and celebrates our collective success. Experience the magic of Melayu Klasik in a setting of elegance and camaraderie.</p>
+ <button class="button1" style="background: rgba(255,255,255,0.5); color: var(--brand); border: none; border-radius: 999px; padding: 14px 40px; font-weight: 700; font-size: 1rem; cursor: pointer; box-shadow: 0 8px 24px rgba(0,0,0,0.15);">Reserve Your Seat</button>
+ </div>
+ </div>
+</div>
+
+<div class="row sectionBlockLayout sec-7" data-component-theme="portalThemeColor7" style="display: flex; flex-wrap: wrap; min-height: auto;">
+ <div class="container" style="display: flex; flex-wrap: wrap; width: 100%;">
+ <div class="col-md-12 columnBlockLayout" style="flex-grow: 1; display: flex; flex-direction: column; padding: 64px 40px;">
+ <div style="text-align: center; margin-bottom: 48px;">
+ <span style="font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.75); font-weight: 600; display: block; margin-bottom: 10px;">Testimonials</span>
+ <h2 style="font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #fff; margin-bottom: 12px;">What Attendees Say</h2>
+ <p style="color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; line-height: 1.7;">Hear from past attendees about the unforgettable experience of Malam COC.</p>
+ </div>
+ <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+ <div class="card-lift" style="background: rgba(255,255,255,0.12); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+ <div style="color: rgba(255,255,255,0.9); font-size: 2.2rem; line-height: 1; margin-bottom: 16px;">❝</div>
+ <p style="color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 24px; font-style: italic; font-size: 0.97rem;">"Malam COC beautifully blends tradition with corporate spirit. The atmosphere was majestic and the performances captivating."</p>
+ <div style="display: flex; align-items: center; gap: 12px;">
+ <img style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0;" src="https://cdn.hubblecontent.osi.office.net/m365content/publish/9f54dfe2-3496-44fc-aebb-9d90a293b069/thumbnails/xxlarge.jpg" alt="Aisyah Rahman">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Aisyah Rahman</div>
+ <div style="color: rgba(255,255,255,0.65); font-size: 0.8rem;">Marketing Director</div>
+ </div>
+ </div>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.12); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+ <div style="color: rgba(255,255,255,0.9); font-size: 2.2rem; line-height: 1; margin-bottom: 16px;">❝</div>
+ <p style="color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 24px; font-style: italic; font-size: 0.97rem;">"The event was a perfect homage to our heritage, filled with elegance and heartfelt moments that brought us closer as a team."</p>
+ <div style="display: flex; align-items: center; gap: 12px;">
+ <img style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0;" src="https://cdn.hubblecontent.osi.office.net/m365content/publish/0992bbf5-7967-4ef0-8acd-c2acda1e9eed/thumbnails/xxlarge.jpg" alt="Farid Ismail">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Farid Ismail</div>
+ <div style="color: rgba(255,255,255,0.65); font-size: 0.8rem;">Operations Manager</div>
+ </div>
+ </div>
+ </div>
+ <div class="card-lift" style="background: rgba(255,255,255,0.12); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+ <div style="color: rgba(255,255,255,0.9); font-size: 2.2rem; line-height: 1; margin-bottom: 16px;">❝</div>
+ <p style="color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 24px; font-style: italic; font-size: 0.97rem;">"An exquisite celebration that honors our roots while inspiring us to achieve greater heights together."</p>
+ <div style="display: flex; align-items: center; gap: 12px;">
+ <img style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0;" src="https://cdn.hubblecontent.osi.office.net/m365content/publish/fd105286-d200-4242-b2ed-d1e8ea6ec0d2/thumbnails/xxlarge.jpg" alt="Nurul Huda">
+ <div>
+ <div style="font-weight: 700; color: #fff; font-size: 0.9rem;">Nurul Huda</div>
+ <div style="color: rgba(255,255,255,0.65); font-size: 0.8rem;">HR Specialist</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>

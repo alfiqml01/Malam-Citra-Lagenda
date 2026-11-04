@@ -20,7 +20,7 @@
       justify-content: center;
       text-align: center;
       overflow: hidden;
-      padding: 160px 32px 80px;
+      padding: 160px 32px 40px;
     }
     .hero-bg {
       position: absolute;
@@ -166,15 +166,14 @@
     }
     /* Scroll indicator */
     .hero-scroll {
-      position: absolute;
-      bottom: 36px; left: 50%;
-      transform: translateX(-50%);
+      position: relative;
       z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      animation: float 2s ease-in-out infinite;
+      margin-top: 52px;
+      animation: hero-scroll-float 2s ease-in-out infinite;
     }
     .hero-scroll span {
       font-family: var(--font-heading);
@@ -187,6 +186,10 @@
       width: 1px;
       height: 48px;
       background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    @keyframes hero-scroll-float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
     }
 
     /* ── COUNTDOWN ───────────────────────────────────────── */
@@ -338,18 +341,6 @@
       margin-top: 28px;
     }
 
-    /* ── HIGHLIGHTS ──────────────────────────────────────── */
-    .highlights-section {
-      background: var(--dark);
-      padding: 100px 0;
-    }
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      margin-top: 60px;
-    }
-
     /* ── DRESS CODE ──────────────────────────────────────── */
     .dresscode-section {
       background: linear-gradient(180deg, var(--dark-mid) 0%, var(--crimson-deep) 100%);
@@ -357,79 +348,34 @@
       position: relative;
       overflow: hidden;
     }
-    .dresscode-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 56px;
+    .dresscode-simple {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 24px 20px;
     }
-    .dresscode-card {
-      background: rgba(26,10,0,0.55);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-lg);
-      padding: 40px 36px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(8px);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .dresscode-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 56px rgba(0,0,0,0.5);
-    }
-    .dresscode-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .dresscode-gender {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      color: var(--gold-light);
-      margin-bottom: 8px;
-    }
-    .dresscode-tagline {
-      font-family: var(--font-sub);
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--gold);
-      margin-bottom: 24px;
-    }
-    .dresscode-list {
-      list-style: none;
-      padding: 0;
-    }
-    .dresscode-list li {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: var(--text-on-dark);
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+    .dresscode-icons {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      line-height: 1.5;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      font-size: 3rem;
+      margin-bottom: 18px;
+      line-height: 1;
     }
-    .dresscode-list li::before {
-      content: '◆';
+    .dresscode-icons-star {
       color: var(--gold);
-      font-size: 0.5rem;
-      flex-shrink: 0;
-      margin-top: 6px;
+      font-size: 1.2rem;
+      opacity: 0.8;
     }
-    .dresscode-list li:last-child { border-bottom: none; }
-    .dresscode-note {
+    .dresscode-statement {
       font-family: var(--font-sub);
       font-style: italic;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-top: 20px;
-      padding: 14px 16px;
-      background: rgba(201,168,76,0.05);
-      border-left: 2px solid var(--gold);
-      border-radius: 4px;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+      color: var(--text-on-dark);
+      max-width: 560px;
+      margin: 20px auto 0;
+      line-height: 1.7;
     }
 
     /* ── PROGRAMME TEASER ────────────────────────────────── */
@@ -549,15 +495,24 @@
 
     /* ── RESPONSIVE ──────────────────────────────────────── */
     @media (max-width: 900px) {
-      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-      .dresscode-grid  { grid-template-columns: 1fr; }
+      .warkah-card { padding: 48px 32px; }
     }
     @media (max-width: 600px) {
-      .highlights-grid { grid-template-columns: 1fr; }
-      .warkah-card { padding: 40px 28px; }
       .hero { padding: 140px 20px 80px; }
-      .countdown-grid { gap: 10px; }
-      .countdown-unit { min-width: 80px; }
+      .warkah-card { padding: 40px 26px; }
+      .countdown-grid { gap: 8px; }
+      .countdown-unit { min-width: 72px; }
+      .countdown-sep { font-size: 2rem; padding-top: 20px; }
+      .programme-section { padding: 64px 0; }
+      .programme-timeline { margin-top: 40px; }
+      .timeline-item { gap: 16px; padding-bottom: 26px; }
+      .dresscode-section { padding: 64px 0; }
+      .dresscode-icons { font-size: 2.6rem; gap: 16px; }
+    }
+    @media (max-width: 420px) {
+      .countdown-sep { display: none; }
+      .countdown-grid { gap: 12px; }
+      .countdown-unit { min-width: calc(50% - 6px); }
     }
   </style>
 </head>
@@ -794,59 +749,118 @@
   </div>
 
   <!-- ══════════════════════════════════════════════════
-       EVENT HIGHLIGHTS
+       ATURCARA MAJLIS
   ══════════════════════════════════════════════════ -->
-  <section class="highlights-section" id="highlights">
+  <section class="programme-section" id="programme">
     <div class="container">
       <div class="text-center reveal">
-        <span class="section-label">Keistimewaan Malam</span>
-        <h2 class="section-title">Pengalaman Malam Citra Lagenda</h2>
+        <span class="section-label">Aturcara Malam</span>
+        <h2 class="section-title">Aturcara Majlis</h2>
         <div class="ornament-divider"><span>✦</span></div>
         <p class="section-subtitle">
-          Sebuah malam penuh dengan keindahan seni, budaya, dan warisan diraja yang akan memukau setiap tetamu.
+          Susunan acara sepanjang malam Citra Lagenda &mdash; dari ketibaan tetamu hingga majlis bersurai.
         </p>
       </div>
-      <div class="highlights-grid">
-        <div class="card reveal">
-          <div class="card-icon">🎭</div>
-          <h3>Persembahan Bangsawan</h3>
-          <p>Saksikan persembahan teater Bangsawan dan tarian klasik Melayu yang menghidupkan semula kegemilangan istana.</p>
+      <div class="programme-timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">🚪</div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:00 PM</div>
+            <div class="timeline-event">Ketibaan &amp; Pendaftaran Tetamu</div>
+            <div class="timeline-desc">Pendaftaran tetamu dan pengambilan tempat duduk.</div>
+          </div>
         </div>
-        <div class="card reveal delay-1">
-          <div class="card-icon">🍽️</div>
-          <h3>Jamuan Diraja</h3>
-          <p>Nikmati hidangan istimewa berinspirasi masakan tradisional Melayu yang dirangka dengan penuh keanggunan.</p>
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot">👑</div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:30 PM</div>
+            <div class="timeline-event">Ketibaan Staf &amp; Tetamu VIP</div>
+            <div class="timeline-desc">Sambutan ketibaan staf dan tetamu VIP.</div>
+          </div>
         </div>
-        <div class="card reveal delay-2">
-          <div class="card-icon">🎶</div>
-          <h3>Muzik Gamelan Live</h3>
-          <p>Alunan bunyi gamelan tradisional yang merdu akan mengiringi malam yang penuh dengan nostalgia kerajaan Melayu.</p>
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot">🎤</div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:45 PM</div>
+            <div class="timeline-event">Majlis Pembukaan</div>
+            <div class="timeline-desc">Bacaan doa, ucapan, perasmian &amp; tayangan montaj C.O.C.</div>
+          </div>
         </div>
-        <div class="card reveal delay-3">
-          <div class="card-icon">👑</div>
-          <h3>Suasana Istana</h3>
-          <p>Hiasan pentas yang mewah dengan motif ukiran Melayu dan sentuhan emas menciptakan suasana istana yang autentik.</p>
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot">🍽️</div>
+          <div class="timeline-content">
+            <div class="timeline-time">8:15 PM</div>
+            <div class="timeline-event">Jamuan Makan Malam</div>
+            <div class="timeline-desc">Sajian malam buat para tetamu.</div>
+          </div>
         </div>
-        <div class="card reveal">
-          <div class="card-icon">🏆</div>
-          <h3>Anugerah &amp; Penghargaan</h3>
-          <p>Majlis pengiktirafan bagi kakitangan cemerlang dan pencapaian bahagian sepanjang tahun.</p>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">🎁</div>
+          <div class="timeline-content">
+            <div class="timeline-time">8:45 PM</div>
+            <div class="timeline-event">Cabutan Bertuah &amp; Pertukaran Hadiah &mdash; Sesi 1</div>
+            <div class="timeline-desc">10 cabutan &middot; 15 pertukaran.</div>
+          </div>
         </div>
-        <div class="card reveal delay-1">
-          <div class="card-icon">📸</div>
-          <h3>Galeri Budaya</h3>
-          <p>Sudut bergambar bertema diraja dengan kostum tradisional dan latar belakang istana yang memukau.</p>
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot">🎭</div>
+          <div class="timeline-content">
+            <div class="timeline-time">9:00 PM</div>
+            <div class="timeline-event">Persembahan &mdash; Sesi 1</div>
+            <div class="timeline-desc">Persembahan 1 &amp; 2 (3 minit setiap satu).</div>
+          </div>
         </div>
-        <div class="card reveal delay-2">
-          <div class="card-icon">🎁</div>
-          <h3>Cabutan Bertuah</h3>
-          <p>Cabutan hadiah istimewa bernilai tinggi untuk para tetamu yang bertuah pada malam yang bersejarah ini.</p>
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot">🎁</div>
+          <div class="timeline-content">
+            <div class="timeline-time">9:15 PM</div>
+            <div class="timeline-event">Cabutan Bertuah &amp; Pertukaran Hadiah &mdash; Sesi 2</div>
+            <div class="timeline-desc">10 cabutan &middot; 20 pertukaran.</div>
+          </div>
         </div>
-        <div class="card reveal delay-3">
-          <div class="card-icon">🌺</div>
-          <h3>Bunga Manggar</h3>
-          <p>Persembahan bunga manggar tradisional sebagai tanda kegembiraan dan kesyukuran sambutan malam agung ini.</p>
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot">🎭</div>
+          <div class="timeline-content">
+            <div class="timeline-time">9:30 PM</div>
+            <div class="timeline-event">Persembahan &mdash; Sesi 2</div>
+            <div class="timeline-desc">Persembahan 1 &amp; 2 (3 minit setiap satu).</div>
+          </div>
         </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">🎁</div>
+          <div class="timeline-content">
+            <div class="timeline-time">9:45 PM</div>
+            <div class="timeline-event">Cabutan Bertuah &amp; Pertukaran Hadiah &mdash; Sesi 3</div>
+            <div class="timeline-desc">10 cabutan &middot; 25 pertukaran.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-dot">🏆</div>
+          <div class="timeline-content">
+            <div class="timeline-time">10:00 PM</div>
+            <div class="timeline-event">Penyampaian Anugerah</div>
+            <div class="timeline-desc">Staff Awards, Best Dress, Rumah Sukan Terbaik &amp; Persembahan Terbaik.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-dot">🎟️</div>
+          <div class="timeline-content">
+            <div class="timeline-time">10:20 PM</div>
+            <div class="timeline-event">Cabutan Bertuah &mdash; Sesi 4</div>
+            <div class="timeline-desc">Pusingan terakhir &mdash; 20 cabutan.</div>
+          </div>
+        </div>
+        <div class="timeline-item reveal delay-3">
+          <div class="timeline-dot">🌙</div>
+          <div class="timeline-content">
+            <div class="timeline-time">11:00 PM</div>
+            <div class="timeline-event">Majlis Bersurai</div>
+            <div class="timeline-desc">Penutup tirai &mdash; terima kasih atas kehadiran.</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:56px;">
+        <a href="eventdetails.html#programme" class="btn btn-outline reveal">Butiran Aturcara Penuh →</a>
       </div>
     </div>
   </section>
@@ -856,129 +870,16 @@
   ══════════════════════════════════════════════════ -->
   <section class="dresscode-section" id="dresscode">
     <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Panduan Pakaian</span>
-        <h2 class="section-title">Kod Pakaian: Melayu Klasik</h2>
+      <div class="dresscode-simple reveal">
+        <span class="section-label">Kod Pakaian</span>
+        <div class="dresscode-icons" aria-hidden="true">
+          <span>👘</span><span class="dresscode-icons-star">✦</span><span>👗</span>
+        </div>
+        <h2 class="section-title">Melayu Klasik</h2>
         <div class="ornament-divider"><span>👑</span></div>
-        <p class="section-subtitle">
-          Hadirlah dengan memakai pakaian tradisional Melayu yang menjadi lambang keagungan dan keindahan warisan bangsa.
+        <p class="dresscode-statement">
+          Hadirilah malam ini dengan pakaian tradisional Melayu &mdash; lambang keagungan warisan bangsa.
         </p>
-      </div>
-      <div class="dresscode-grid">
-        <!-- Lelaki -->
-        <div class="dresscode-card reveal-left">
-          <div style="font-size:2.5rem; margin-bottom:12px;">👘</div>
-          <div class="dresscode-gender">Lelaki</div>
-          <div class="dresscode-tagline">Wira Diraja — Baju Melayu Bersampin</div>
-          <ul class="dresscode-list">
-            <li>Baju Melayu Cekak Musang / Teluk Belanga</li>
-            <li>Sampin songket atau sampin sutera</li>
-            <li>Songkok atau tengkolok tradisional</li>
-            <li>Seluar panjang berpadanan</li>
-            <li>Kasut kulit atau kasut tradisional</li>
-            <li>Aksesori: Pending, rantai emas, keris (hiasan)</li>
-          </ul>
-          <div class="dresscode-note">
-            Warna pilihan: Merah diraja, hijau zamrud, biru diraja, hitam emas, atau kombinasi emas.
-          </div>
-        </div>
-        <!-- Wanita -->
-        <div class="dresscode-card reveal-right">
-          <div style="font-size:2.5rem; margin-bottom:12px;">👗</div>
-          <div class="dresscode-gender">Wanita</div>
-          <div class="dresscode-tagline">Puteri Diraja — Kebaya &amp; Songket</div>
-          <ul class="dresscode-list">
-            <li>Kebaya labuh songket atau baju kurung tradisional</li>
-            <li>Kain batik songket / kain tenun</li>
-            <li>Selendang sutera atau selendang songket</li>
-            <li>Aksesori emas: pending, cucuk sanggul, rantai</li>
-            <li>Kasut bertumit rendah / kasut tradisional</li>
-            <li>Sanggul atau coiffure tradisional Melayu</li>
-          </ul>
-          <div class="dresscode-note">
-            Warna pilihan: Merah, emas, ungu diraja, hijau zamrud, biru laut, atau warna-warna songket klasik.
-          </div>
-        </div>
-      </div>
-      <div class="text-center" style="margin-top:40px;">
-        <a href="eventdetails.html#dresscode" class="btn btn-gold reveal">Lihat Panduan Lengkap ✦</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════
-       PROGRAMME TEASER
-  ══════════════════════════════════════════════════ -->
-  <section class="programme-section" id="programme">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Aturcara Malam</span>
-        <h2 class="section-title">Sekilas Pandang Program</h2>
-        <div class="ornament-divider"><span>✦</span></div>
-        <p class="section-subtitle">
-          Malam yang penuh dengan acara menarik dari saat pertama anda melangkah masuk sehingga tabir malam diturunkan.
-        </p>
-      </div>
-      <div class="programme-timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot">🚪</div>
-          <div class="timeline-content">
-            <div class="timeline-time">7:00 PM</div>
-            <div class="timeline-event">Ketibaan &amp; Pendaftaran Tetamu</div>
-            <div class="timeline-desc">Sambutan tetamu, sesi bergambar, dan pengambilan tempat duduk.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal delay-1">
-          <div class="timeline-dot">🎺</div>
-          <div class="timeline-content">
-            <div class="timeline-time">7:30 PM</div>
-            <div class="timeline-event">Perasmian Rasmi</div>
-            <div class="timeline-desc">Ketibaan tetamu kehormat, nyanyian lagu rasmi, dan ucap aluan.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal delay-2">
-          <div class="timeline-dot">🎭</div>
-          <div class="timeline-content">
-            <div class="timeline-time">8:00 PM</div>
-            <div class="timeline-event">Persembahan Pembuka Tirai</div>
-            <div class="timeline-desc">Persembahan tarian Melayu klasik dan Bangsawan oleh kumpulan seni istimewa.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal delay-3">
-          <div class="timeline-dot">🍽️</div>
-          <div class="timeline-content">
-            <div class="timeline-time">8:30 PM</div>
-            <div class="timeline-event">Jamuan Makan Malam Diraja</div>
-            <div class="timeline-desc">Hidangan istimewa berinspirasi masakan diraja Melayu.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot">🏆</div>
-          <div class="timeline-content">
-            <div class="timeline-time">9:30 PM</div>
-            <div class="timeline-event">Majlis Anugerah &amp; Penghargaan</div>
-            <div class="timeline-desc">Pengiktirafan kecemerlangan kakitangan sepanjang tahun.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal delay-1">
-          <div class="timeline-dot">🎁</div>
-          <div class="timeline-content">
-            <div class="timeline-time">10:30 PM</div>
-            <div class="timeline-event">Cabutan Bertuah &amp; Hiburan</div>
-            <div class="timeline-desc">Cabutan hadiah bernilai dan persembahan hiburan penutup.</div>
-          </div>
-        </div>
-        <div class="timeline-item reveal delay-2">
-          <div class="timeline-dot">🌙</div>
-          <div class="timeline-content">
-            <div class="timeline-time">11:30 PM</div>
-            <div class="timeline-event">Penutup Tirai</div>
-            <div class="timeline-desc">Majlis ditamatkan — Selamat malam dan terima kasih atas kehadiran.</div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center" style="margin-top:56px;">
-        <a href="eventdetails.html" class="btn btn-outline reveal">Aturcara Penuh →</a>
       </div>
     </div>
   </section>

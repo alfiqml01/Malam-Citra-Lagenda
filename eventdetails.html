@@ -44,66 +44,6 @@
       box-shadow: 0 4px 16px rgba(139,0,0,0.4);
     }
 
-    /* ── OVERVIEW CARDS ─────────────────────────────── */
-    .overview-section {
-      background: var(--dark);
-      padding: 80px 0;
-    }
-    .overview-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-    .overview-card {
-      background: linear-gradient(160deg, rgba(45,16,0,0.8), rgba(26,10,0,0.9));
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-lg);
-      padding: 40px 32px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .overview-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .overview-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 24px 56px rgba(0,0,0,0.5);
-    }
-    .overview-icon {
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-      display: block;
-      filter: drop-shadow(0 4px 8px rgba(201,168,76,0.3));
-    }
-    .overview-label {
-      font-family: var(--font-heading);
-      font-size: 0.65rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .overview-value {
-      font-family: var(--font-sub);
-      font-size: 1.15rem;
-      color: var(--ivory);
-      line-height: 1.5;
-      font-weight: 600;
-    }
-    .overview-sub {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      font-style: italic;
-    }
-
     /* ── PROGRAMME ─────────────────────────────────── */
     .programme-section {
       background: linear-gradient(180deg, var(--dark-mid) 0%, var(--dark) 100%);
@@ -217,6 +157,53 @@
       border-radius: 999px;
       padding: 3px 12px;
       margin-top: 6px;
+    }
+
+    /* Sub-list within programme items (run-of-show) */
+    .prog-sublist {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 5px;
+    }
+    .prog-sublist li {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      color: var(--text-on-dark);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .prog-sublist li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      color: var(--gold);
+      font-size: 0.45rem;
+    }
+    .prog-sublist .sub-nested {
+      list-style: none;
+      padding: 6px 0 2px 18px;
+      margin: 0;
+      display: grid;
+      gap: 3px;
+    }
+    .prog-sublist .sub-nested li {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding-left: 16px;
+      position: relative;
+    }
+    .prog-sublist .sub-nested li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--gold);
+      font-size: 0.7rem;
     }
 
     /* ── VENUE ──────────────────────────────────────── */
@@ -359,252 +346,62 @@
       background: linear-gradient(180deg, var(--dark-mid) 0%, var(--crimson-deep) 60%, var(--dark-mid) 100%);
       padding: 80px 0;
     }
-    .dresscode-hero {
+    .dresscode-simple {
+      max-width: 720px;
+      margin: 0 auto;
       text-align: center;
-      margin-bottom: 60px;
+      padding: 24px 20px;
     }
-    .dc-main-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 40px;
+    .dresscode-icons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 22px;
+      font-size: 3rem;
+      margin-bottom: 18px;
+      line-height: 1;
     }
-    .dc-card {
-      background: rgba(26,10,0,0.65);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-xl);
-      padding: 48px 40px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
+    .dresscode-icons-star {
+      color: var(--gold);
+      font-size: 1.2rem;
+      opacity: 0.8;
     }
-    .dc-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-    }
-    .dc-gender-icon { font-size: 3rem; margin-bottom: 16px; display: block; }
-    .dc-gender {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--gold-light);
-      margin-bottom: 4px;
-    }
-    .dc-tagline {
+    .dresscode-statement {
       font-family: var(--font-sub);
       font-style: italic;
-      color: var(--gold);
-      font-size: 0.92rem;
-      margin-bottom: 28px;
-      display: block;
-    }
-    .dc-section-head {
-      font-family: var(--font-heading);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin: 20px 0 10px;
-    }
-    .dc-list {
-      list-style: none;
-      padding: 0;
-    }
-    .dc-list li {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
+      font-size: clamp(1.05rem, 2.4vw, 1.3rem);
       color: var(--text-on-dark);
-      padding: 9px 0;
-      border-bottom: 1px solid rgba(201,168,76,0.08);
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      line-height: 1.5;
-    }
-    .dc-list li::before {
-      content: '◆';
-      color: var(--gold);
-      font-size: 0.45rem;
-      flex-shrink: 0;
-      margin-top: 7px;
-    }
-    .dc-list li:last-child { border-bottom: none; }
-    .dc-color-swatches {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
-    }
-    .swatch {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(201,168,76,0.06);
-      border: 1px solid rgba(201,168,76,0.15);
-      border-radius: 999px;
-      padding: 4px 12px 4px 8px;
-      font-family: var(--font-heading);
-      font-size: 0.65rem;
-      letter-spacing: 0.08em;
-      color: var(--text-on-dark);
-    }
-    .swatch-dot {
-      width: 14px; height: 14px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      flex-shrink: 0;
-    }
-    /* NOT allowed */
-    .dc-not-allowed {
-      background: rgba(139,0,0,0.08);
-      border: 1px solid rgba(139,0,0,0.2);
-      border-radius: var(--radius-md);
-      padding: 24px 28px;
-      margin-top: 32px;
-    }
-    .dc-not-allowed-title {
-      font-family: var(--font-heading);
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: #ff6b6b;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .dc-not-list {
-      list-style: none; padding: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px 24px;
-    }
-    .dc-not-list li {
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-    .dc-not-list li::before {
-      content: '✕';
-      color: #ff6b6b;
-      font-size: 0.7rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    /* Inspiration gallery row */
-    .dc-inspo {
-      background: rgba(45,16,0,0.5);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-lg);
-      padding: 36px;
-      margin-top: 32px;
-      text-align: center;
-    }
-    .dc-inspo-title {
-      font-family: var(--font-heading);
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .dc-inspo-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .dc-inspo-item {
-      background: rgba(26,10,0,0.7);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-md);
-      padding: 20px 16px;
-      font-family: var(--font-body);
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      font-style: italic;
-      line-height: 1.5;
-    }
-    .dc-inspo-item .emoji { font-size: 1.8rem; display: block; margin-bottom: 8px; }
-
-    /* ── FAQ ─────────────────────────────────────────── */
-    .faq-section {
-      background: var(--dark);
-      padding: 80px 0;
-    }
-    .faq-list {
-      max-width: 760px;
-      margin: 48px auto 0;
-    }
-    .faq-item {
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-md);
-      margin-bottom: 12px;
-      overflow: hidden;
-      transition: border-color var(--transition);
-    }
-    .faq-item.open { border-color: rgba(201,168,76,0.5); }
-    .faq-question {
-      width: 100%;
-      background: rgba(45,16,0,0.5);
-      border: none;
-      padding: 20px 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      cursor: pointer;
-      transition: background var(--transition);
-      text-align: left;
-    }
-    .faq-question:hover { background: rgba(45,16,0,0.8); }
-    .faq-q-text {
-      font-family: var(--font-heading);
-      font-size: 0.88rem;
-      letter-spacing: 0.04em;
-      color: var(--ivory);
-    }
-    .faq-item.open .faq-q-text { color: var(--gold-light); }
-    .faq-chevron {
-      color: var(--gold);
-      font-size: 0.9rem;
-      flex-shrink: 0;
-      transition: transform var(--transition);
-    }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding var(--transition);
-    }
-    .faq-item.open .faq-answer { max-height: 400px; }
-    .faq-answer-inner {
-      padding: 4px 28px 24px;
-      font-family: var(--font-body);
-      font-size: 0.97rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      border-top: 1px solid rgba(201,168,76,0.08);
+      max-width: 560px;
+      margin: 20px auto 0;
+      line-height: 1.7;
     }
 
     /* ── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 960px) {
-      .overview-grid   { grid-template-columns: 1fr 1fr; }
       .venue-grid      { grid-template-columns: 1fr; }
-      .dc-main-grid    { grid-template-columns: 1fr; }
       .transport-grid  { grid-template-columns: 1fr 1fr; }
-      .dc-inspo-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .tab-nav {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      .tab-btn { white-space: nowrap; flex-shrink: 0; }
     }
     @media (max-width: 640px) {
-      .overview-grid   { grid-template-columns: 1fr; }
-      .programme-item  { grid-template-columns: 80px 40px 1fr; }
+      .programme-item  { grid-template-columns: 70px 40px 1fr; gap: 0 12px; }
+      .prog-time { font-size: 0.7rem; }
+      .prog-sublist li { font-size: 0.84rem; }
       .transport-grid  { grid-template-columns: 1fr; }
-      .dc-inspo-grid   { grid-template-columns: repeat(2, 1fr); }
-      .dc-not-list     { grid-template-columns: 1fr; }
-      .tab-nav         { border-radius: var(--radius-lg); }
+      .venue-info-body { padding: 24px; }
+      .venue-info-header { padding: 22px 24px; }
+      .dresscode-section { padding: 64px 0; }
     }
   </style>
 </head>
@@ -679,75 +476,11 @@
   ══════════════════════════════════════════════════ -->
   <div style="background:var(--dark); padding: 40px 32px 0; position:sticky; top:0; z-index:50; border-bottom:1px solid var(--border-gold);">
     <div class="tab-nav" id="tabNav">
-      <button class="tab-btn active" data-target="overview">Gambaran Keseluruhan</button>
-      <button class="tab-btn" data-target="programme">Aturcara</button>
+      <button class="tab-btn active" data-target="programme">Aturcara</button>
       <button class="tab-btn" data-target="venue">Tempat &amp; Hala Tuju</button>
       <button class="tab-btn" data-target="dresscode">Kod Pakaian</button>
-      <button class="tab-btn" data-target="faq">Soalan Lazim</button>
     </div>
   </div>
-
-  <!-- ══════════════════════════════════════════════════
-       OVERVIEW
-  ══════════════════════════════════════════════════ -->
-  <section class="overview-section" id="overview">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Sekilas Pandang</span>
-        <h2 class="section-title">Malam COC 2026 — Citra Lagenda</h2>
-        <div class="ornament-divider"><span>✦</span></div>
-        <p class="section-subtitle">
-          Satu malam yang merayakan keagungan warisan Melayu melalui seni, budaya, dan kebersamaan — direka untuk meninggalkan kesan yang abadi.
-        </p>
-      </div>
-
-      <div class="overview-grid">
-        <div class="overview-card reveal">
-          <span class="overview-icon">📅</span>
-          <div class="overview-label">Tarikh</div>
-          <div class="overview-value">Jumaat, 20 November 2026</div>
-          <div class="overview-sub">Malam Jumaat yang penuh berkat</div>
-        </div>
-        <div class="overview-card reveal delay-1">
-          <span class="overview-icon">🕖</span>
-          <div class="overview-label">Masa</div>
-          <div class="overview-value">7:30 Malam</div>
-          <div class="overview-sub">Pendaftaran bermula 7:00 PM</div>
-        </div>
-        <div class="overview-card reveal delay-2">
-          <span class="overview-icon">🏨</span>
-          <div class="overview-label">Tempat</div>
-          <div class="overview-value">IDEAS Hotel Kuala Lumpur</div>
-          <div class="overview-sub">Dewan Utama, Aras Ballroom</div>
-        </div>
-        <div class="overview-card reveal delay-3">
-          <span class="overview-icon">👘</span>
-          <div class="overview-label">Kod Pakaian</div>
-          <div class="overview-value">Melayu Klasik (Bangsawan)</div>
-          <div class="overview-sub">Baju Melayu Diraja / Kebaya Songket</div>
-        </div>
-        <div class="overview-card reveal">
-          <span class="overview-icon">👥</span>
-          <div class="overview-label">Tetamu Jemputan</div>
-          <div class="overview-value">300+ Tetamu</div>
-          <div class="overview-sub">Kakitangan COC &amp; tetamu kehormat</div>
-        </div>
-        <div class="overview-card reveal delay-1">
-          <span class="overview-icon">🎭</span>
-          <div class="overview-label">Tema</div>
-          <div class="overview-value">Melayu Klasik — Bangsawan</div>
-          <div class="overview-sub">Warisan diraja yang agung &amp; mulia</div>
-        </div>
-      </div>
-
-      <!-- Quick CTA row -->
-      <div class="text-center" style="margin-top:56px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer"    class="btn btn-gold reveal">✦ Daftar RSVP Sekarang</a>
-        <a href="#programme"  class="btn btn-outline reveal delay-1">Lihat Aturcara</a>
-        <a href="#dresscode"  class="btn btn-outline reveal delay-2">Panduan Pakaian</a>
-      </div>
-    </div>
-  </section>
 
   <!-- ══════════════════════════════════════════════════
        PROGRAMME
@@ -765,6 +498,7 @@
       </p>
 
       <div class="programme-full">
+
         <!-- Block: Kehadiran -->
         <div class="programme-block reveal">
           <div class="programme-block-title">Ketibaan &amp; Sambutan</div>
@@ -776,21 +510,9 @@
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Pendaftaran &amp; Ketibaan Tetamu</div>
-              <div class="prog-desc">Tetamu dijemput hadir, mendaftar masuk, dan diarak ke meja masing-masing oleh pengiring malam. Sesi bergambar di kawasan bunga manggar tersedia.</div>
-              <span class="prog-badge">📸 Photo Booth Tersedia</span>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">7:20 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🎶</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Alunan Gamelan Pembuka</div>
-              <div class="prog-desc">Orkestra gamelan tradisional mengalunkan melodi klasik Melayu semasa tetamu mengambil tempat duduk.</div>
+              <div class="prog-title">Ketibaan &amp; Pendaftaran Tetamu</div>
+              <div class="prog-desc">Pintu gerbang dibuka. Tetamu dijemput mendaftar masuk dan diarak ke meja masing-masing oleh pengiring majlis.</div>
+              <span class="prog-badge">🎟️ Pendaftaran Tetamu</span>
             </div>
           </div>
 
@@ -801,16 +523,16 @@
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Ketibaan Tetamu Kehormat</div>
-              <div class="prog-desc">Ketibaan tetamu kehormat dan Yang Dipertua Bahagian COC diiringi dentuman paluan kompang.</div>
-              <span class="prog-badge">🥁 Kompang &amp; Paluan Diraja</span>
+              <div class="prog-title">Ketibaan Staf &amp; Tetamu VIP</div>
+              <div class="prog-desc">Ketibaan staf serta tetamu VIP dan jemputan khas diiringi paluan kompang penyambut ketibaan.</div>
+              <span class="prog-badge">🥁 Sambutan Ketibaan</span>
             </div>
           </div>
         </div>
 
-        <!-- Block: Perasmian -->
+        <!-- Block: Pembukaan -->
         <div class="programme-block reveal">
-          <div class="programme-block-title">Majlis Perasmian</div>
+          <div class="programme-block-title">Majlis Pembukaan</div>
 
           <div class="programme-item">
             <div class="prog-time">7:45 PM</div>
@@ -819,172 +541,174 @@
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Nyanyian Lagu Kebangsaan &amp; Lagu Bahagian</div>
-              <div class="prog-desc">Semua hadirin berdiri bagi menghormati nyanyian Negaraku dan lagu rasmi bahagian.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">7:50 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🙏</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Bacaan Doa</div>
-              <div class="prog-desc">Majlis dimulakan dengan bacaan doa sebagai tanda kesyukuran dan permohonan keberkatan.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">7:55 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">📢</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Ucap Aluan Pengerusi Majlis</div>
-              <div class="prog-desc">Kata-kata alu-aluan dari Pengerusi Jawatankuasa Malam COC 2026.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">8:05 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🎙️</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Ucapan Khas Yang Dipertua</div>
-              <div class="prog-desc">Perasmian rasmi Malam COC 2026 Citra Lagenda oleh Yang Dipertua Bahagian COC.</div>
-              <span class="prog-badge">⭐ Ucapan Rasmi</span>
+              <div class="prog-title">Majlis Pembukaan</div>
+              <div class="prog-desc">Majlis rasmi dibuka dengan susunan aturcara berikut:</div>
+              <ul class="prog-sublist">
+                <li>Bacaan Doa</li>
+                <li>Ucapan Pengarah</li>
+                <li>Ucapan Ketua Jabatan (HOD)</li>
+                <li>Perasmian Majlis</li>
+                <li>Gimik Perasmian</li>
+                <li>Tayangan Montaj / Video C.O.C</li>
+                <li>Sesi Bergambar</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- Block: Makan Malam -->
+        <!-- Block: Jamuan & Sesi 1 -->
         <div class="programme-block reveal">
-          <div class="programme-block-title">Jamuan Makan Malam Diraja</div>
+          <div class="programme-block-title">Jamuan Makan Malam &amp; Sesi 1</div>
 
           <div class="programme-item">
-            <div class="prog-time">8:20 PM</div>
+            <div class="prog-time">8:15 PM</div>
             <div class="prog-dot-col">
               <div class="prog-dot">🍽️</div>
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Makan Malam Bermula</div>
-              <div class="prog-desc">Jamuan makan malam dengan menu khas terinspirasi masakan diraja Melayu — hidangan pembuka, sajian utama, dan pencuci mulut istimewa.</div>
-              <span class="prog-badge">🍛 Menu Diraja Khas</span>
+              <div class="prog-title">Jamuan Makan Malam</div>
+              <div class="prog-desc">Sajian hidangan malam dihidangkan kepada para tetamu. Cabutan bertuah &amp; persembahan Sesi 1 berlangsung sepanjang jamuan.</div>
+              <span class="prog-badge">🍽️ Jamuan Diraja</span>
             </div>
           </div>
 
           <div class="programme-item">
-            <div class="prog-time">8:30 PM</div>
+            <div class="prog-time">8:45 PM</div>
             <div class="prog-dot-col">
-              <div class="prog-dot">🎭</div>
+              <div class="prog-dot">🎁</div>
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Persembahan Tarian Melayu Klasik</div>
-              <div class="prog-desc">Persembahan tarian zapin, joget, dan tari lilin oleh kumpulan seni tradisional semasa jamuan makan malam.</div>
+              <div class="prog-title">Cabutan Bertuah &amp; Pertukaran Hadiah — Sesi 1</div>
+              <div class="prog-desc">Pusingan pertama cabutan bertuah dan sesi pertukaran hadiah buat para tetamu sepanjang jamuan malam.</div>
+              <span class="prog-badge">🎁 10 Cabutan · 15 Pertukaran</span>
             </div>
           </div>
 
           <div class="programme-item">
             <div class="prog-time">9:00 PM</div>
             <div class="prog-dot-col">
-              <div class="prog-dot">🎪</div>
+              <div class="prog-dot">🎭</div>
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Persembahan Utama: Teater Bangsawan</div>
-              <div class="prog-desc">Persembahan teater Bangsawan khusus yang menggambarkan kisah-kisah agung dari legenda istana Melayu.</div>
-              <span class="prog-badge">🌟 Persembahan Khas Malam Ini</span>
+              <div class="prog-title">Persembahan — Sesi 1</div>
+              <div class="prog-desc">Dua persembahan ringkas memeriahkan lagi jamuan malam.</div>
+              <ul class="prog-sublist">
+                <li>Persembahan 1 — 3 minit</li>
+                <li>Persembahan 2 — 3 minit</li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <!-- Block: Anugerah -->
+        <!-- Block: Sesi 2 -->
         <div class="programme-block reveal">
-          <div class="programme-block-title">Majlis Anugerah &amp; Penghargaan</div>
+          <div class="programme-block-title">Cabutan Bertuah &amp; Persembahan — Sesi 2</div>
 
           <div class="programme-item">
-            <div class="prog-time">9:45 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🏆</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Anugerah Perkhidmatan Cemerlang</div>
-              <div class="prog-desc">Pengiktirafan kepada kakitangan yang menunjukkan prestasi dan dedikasi cemerlang sepanjang tahun.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">10:05 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🥇</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Anugerah Inovasi &amp; Kreativiti</div>
-              <div class="prog-desc">Menghargai idea-idea segar dan inisiatif baharu yang menyumbang kepada kemajuan bahagian.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">10:20 PM</div>
-            <div class="prog-dot-col">
-              <div class="prog-dot">🌟</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Anugerah Kakitangan Terbaik Tahun 2026</div>
-              <div class="prog-desc">Anugerah paling bergengsi malam ini — pengiktirafan tertinggi bagi individu paling berjasa kepada COC.</div>
-              <span class="prog-badge">🏅 Anugerah Utama</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Block: Penutup -->
-        <div class="programme-block reveal">
-          <div class="programme-block-title">Hiburan Penutup</div>
-
-          <div class="programme-item">
-            <div class="prog-time">10:35 PM</div>
+            <div class="prog-time">9:15 PM</div>
             <div class="prog-dot-col">
               <div class="prog-dot">🎁</div>
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Cabutan Bertuah</div>
-              <div class="prog-desc">Cabutan hadiah bernilai tinggi untuk tetamu bertuah. Sila pastikan nombor tempat duduk anda bersama anda!</div>
-              <span class="prog-badge">🎊 Hadiah Bernilai Tinggi</span>
+              <div class="prog-title">Cabutan Bertuah &amp; Pertukaran Hadiah — Sesi 2</div>
+              <div class="prog-desc">Pusingan kedua cabutan bertuah dan pertukaran hadiah untuk para tetamu.</div>
+              <span class="prog-badge">🎁 10 Cabutan · 20 Pertukaran</span>
+            </div>
+          </div>
+
+          <div class="programme-item">
+            <div class="prog-time">9:30 PM</div>
+            <div class="prog-dot-col">
+              <div class="prog-dot">🎭</div>
+              <div class="prog-line"></div>
+            </div>
+            <div class="prog-details">
+              <div class="prog-title">Persembahan — Sesi 2</div>
+              <div class="prog-desc">Dua persembahan ringkas buat pusingan kedua.</div>
+              <ul class="prog-sublist">
+                <li>Persembahan 1 — 3 minit</li>
+                <li>Persembahan 2 — 3 minit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block: Sesi 3 & Anugerah -->
+        <div class="programme-block reveal">
+          <div class="programme-block-title">Cabutan Bertuah 3 &amp; Penyampaian Anugerah</div>
+
+          <div class="programme-item">
+            <div class="prog-time">9:45 PM</div>
+            <div class="prog-dot-col">
+              <div class="prog-dot">🎁</div>
+              <div class="prog-line"></div>
+            </div>
+            <div class="prog-details">
+              <div class="prog-title">Cabutan Bertuah &amp; Pertukaran Hadiah — Sesi 3</div>
+              <div class="prog-desc">Pusingan ketiga cabutan bertuah dan pertukaran hadiah sebelum majlis anugerah.</div>
+              <span class="prog-badge">🎁 10 Cabutan · 25 Pertukaran</span>
+            </div>
+          </div>
+
+          <div class="programme-item">
+            <div class="prog-time">10:00 PM</div>
+            <div class="prog-dot-col">
+              <div class="prog-dot">🏆</div>
+              <div class="prog-line"></div>
+            </div>
+            <div class="prog-details">
+              <div class="prog-title">Penyampaian Anugerah</div>
+              <div class="prog-desc">Majlis pengiktirafan dan penyampaian anugerah malam ini:</div>
+              <ul class="prog-sublist">
+                <li>Staff Awards <em style="color:var(--text-muted); font-size:0.8rem;">(TBC)</em></li>
+                <li>Best Dress Award — Lelaki</li>
+                <li>Best Dress Award — Perempuan</li>
+                <li>
+                  Anugerah Rumah Sukan Terbaik
+                  <ul class="sub-nested">
+                    <li>Johan</li>
+                    <li>Naib Johan</li>
+                    <li>Tempat Ketiga</li>
+                    <li>Tempat Keempat</li>
+                  </ul>
+                </li>
+                <li>Anugerah Persembahan Terbaik</li>
+              </ul>
+              <span class="prog-badge">🏅 Majlis Anugerah</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block: Sesi 4 & Penutup -->
+        <div class="programme-block reveal">
+          <div class="programme-block-title">Cabutan Bertuah Sesi 4 &amp; Penutup</div>
+
+          <div class="programme-item">
+            <div class="prog-time">10:20 PM</div>
+            <div class="prog-dot-col">
+              <div class="prog-dot">🎁</div>
+              <div class="prog-line"></div>
+            </div>
+            <div class="prog-details">
+              <div class="prog-title">Cabutan Bertuah — Sesi 4</div>
+              <div class="prog-desc">Pusingan terakhir cabutan bertuah dengan jumlah hadiah paling banyak buat malam ini.</div>
+              <span class="prog-badge">🎁 20 Cabutan</span>
             </div>
           </div>
 
           <div class="programme-item">
             <div class="prog-time">11:00 PM</div>
             <div class="prog-dot-col">
-              <div class="prog-dot">🎵</div>
-              <div class="prog-line"></div>
-            </div>
-            <div class="prog-details">
-              <div class="prog-title">Hiburan Akhir &amp; Sesi Bebas</div>
-              <div class="prog-desc">Persembahan lagu-lagu nostalgia Melayu klasik. Sesi bergambar bebas dibuka semula.</div>
-            </div>
-          </div>
-
-          <div class="programme-item">
-            <div class="prog-time">11:30 PM</div>
-            <div class="prog-dot-col">
               <div class="prog-dot">🌙</div>
               <div class="prog-line"></div>
             </div>
             <div class="prog-details">
-              <div class="prog-title">Penutup Tirai Citra Lagenda</div>
-              <div class="prog-desc">Majlis ditamatkan secara rasmi. Terima kasih atas kehadiran semua. Selamat malam dan selamat pulang.</div>
+              <div class="prog-title">Majlis Bersurai</div>
+              <div class="prog-desc">Majlis ditamatkan secara rasmi. Terima kasih atas kehadiran semua tetamu. Selamat malam dan selamat pulang.</div>
             </div>
           </div>
         </div>
@@ -1037,7 +761,7 @@
               <div class="venue-detail-icon">📅</div>
               <div>
                 <div class="venue-detail-label">Tarikh &amp; Masa</div>
-                <div class="venue-detail-value">Jumaat, 20 November 2026<br>7:00 PM – 11:30 PM</div>
+                <div class="venue-detail-value">Jumaat, 20 November 2026<br>7:00 PM – 11:00 PM</div>
               </div>
             </div>
             <div class="venue-detail-row">
@@ -1109,225 +833,16 @@
   ══════════════════════════════════════════════════ -->
   <section class="dresscode-section" id="dresscode">
     <div class="container">
-      <div class="dresscode-hero reveal">
-        <span class="section-label">Panduan Pakaian</span>
-        <h2 class="section-title">Kod Pakaian Rasmi</h2>
+      <div class="dresscode-simple reveal">
+        <span class="section-label">Kod Pakaian</span>
+        <div class="dresscode-icons" aria-hidden="true">
+          <span>👘</span><span class="dresscode-icons-star">✦</span><span>👗</span>
+        </div>
+        <h2 class="section-title">Melayu Klasik</h2>
         <div class="ornament-divider"><span>👑</span></div>
-        <p class="section-subtitle" style="max-width:680px;">
-          Melayu Klasik (Bangsawan) — Hayatilah keagungan pakaian tradisional Melayu diraja yang melambangkan keindahan dan maruah bangsa. Kehadiran anda dengan pakaian yang sesuai adalah sebahagian daripada pengalaman malam ini.
+        <p class="dresscode-statement">
+          Hadirilah malam ini dengan pakaian tradisional Melayu &mdash; lambang keagungan warisan bangsa.
         </p>
-      </div>
-
-      <div class="dc-main-grid">
-        <!-- Lelaki -->
-        <div class="dc-card reveal-left">
-          <span class="dc-gender-icon">🧔</span>
-          <div class="dc-gender">Lelaki — Wira Diraja</div>
-          <span class="dc-tagline">Baju Melayu Bersampin &amp; Tengkolok</span>
-
-          <div class="dc-section-head">Pakaian Utama</div>
-          <ul class="dc-list">
-            <li>Baju Melayu Cekak Musang (pilihan utama)</li>
-            <li>Baju Melayu Teluk Belanga (pilihan kedua)</li>
-            <li>Sampin songket atau sampin sutera berkualiti tinggi</li>
-            <li>Seluar panjang berpadanan warna</li>
-          </ul>
-
-          <div class="dc-section-head">Aksesori &amp; Hiasan</div>
-          <ul class="dc-list">
-            <li>Songkok hitam berbenang emas atau tengkolok tradisional</li>
-            <li>Kasut kulit hitam atau kasut tradisional Melayu</li>
-            <li>Pending emas atau perak (optional)</li>
-            <li>Rantai emas atau besi putih (optional)</li>
-            <li>Keris (sebagai hiasan / props sahaja)</li>
-          </ul>
-
-          <div class="dc-section-head">Warna Pilihan</div>
-          <div class="dc-color-swatches">
-            <span class="swatch"><span class="swatch-dot" style="background:#8B0000;"></span>Merah Diraja</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#006400;"></span>Hijau Zamrud</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#00008B;"></span>Biru Diraja</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#1a1a1a; border-color:var(--gold);"></span>Hitam Emas</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#4B0082;"></span>Ungu Diraja</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#C9A84C;"></span>Emas</span>
-          </div>
-        </div>
-
-        <!-- Wanita -->
-        <div class="dc-card reveal-right">
-          <span class="dc-gender-icon">👸</span>
-          <div class="dc-gender">Wanita — Puteri Diraja</div>
-          <span class="dc-tagline">Kebaya Songket &amp; Kain Tenun</span>
-
-          <div class="dc-section-head">Pakaian Utama</div>
-          <ul class="dc-list">
-            <li>Kebaya labuh tradisional dengan kain songket (pilihan utama)</li>
-            <li>Baju kurung tradisional Melayu klasik</li>
-            <li>Kain batik pelikat, kain tenun, atau kain songket</li>
-            <li>Selendang sutera atau selendang songket</li>
-          </ul>
-
-          <div class="dc-section-head">Aksesori &amp; Hiasan</div>
-          <ul class="dc-list">
-            <li>Sanggul tradisional Melayu dengan cucuk sanggul emas</li>
-            <li>Pending emas atau perak pilihan</li>
-            <li>Rantai emas, subang, dan gelang tradisional</li>
-            <li>Kasut bertumit rendah atau kasut tradisional berwarna berpadanan</li>
-            <li>Tudung songket atau selendang yang berpadanan (bagi yang bertudung)</li>
-          </ul>
-
-          <div class="dc-section-head">Warna Pilihan</div>
-          <div class="dc-color-swatches">
-            <span class="swatch"><span class="swatch-dot" style="background:#8B0000;"></span>Merah Saga</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#C9A84C;"></span>Kuning Emas</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#006400;"></span>Hijau Zamrud</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#4B0082;"></span>Ungu Diraja</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#006080;"></span>Biru Teal</span>
-            <span class="swatch"><span class="swatch-dot" style="background:#8B4513;"></span>Coklat Sutera</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Not Allowed -->
-      <div class="dc-not-allowed reveal">
-        <div class="dc-not-allowed-title">⚠️ Pakaian Yang Tidak Dibenarkan</div>
-        <ul class="dc-not-list">
-          <li>Pakaian kasual (jeans, t-shirt, selipar)</li>
-          <li>Pakaian olahraga atau sukan</li>
-          <li>Kemeja biasa tanpa sampin</li>
-          <li>Pakaian berwarna cerah tidak bersesuaian (neon, putih polos)</li>
-          <li>Kasut sukan atau kasut getah</li>
-          <li>Pakaian barat sepenuhnya (tux, gown biasa)</li>
-          <li>Pakaian etnik bukan Melayu tanpa kelulusan</li>
-          <li>Aksesori terlalu menyolok atau tidak sopan</li>
-        </ul>
-      </div>
-
-      <!-- Inspiration grid -->
-      <div class="dc-inspo reveal">
-        <div class="dc-inspo-title">✦ Inspirasi Pakaian Malam Ini ✦</div>
-        <div class="dc-inspo-grid">
-          <div class="dc-inspo-item">
-            <span class="emoji">👘</span>
-            Baju Melayu Cekak Musang songket merah dengan sampin dan tengkolok
-          </div>
-          <div class="dc-inspo-item">
-            <span class="emoji">👗</span>
-            Kebaya labuh sutera emas dengan kain songket motif bunga tanjung
-          </div>
-          <div class="dc-inspo-item">
-            <span class="emoji">🟣</span>
-            Baju Melayu biru diraja dengan sampin songket emas dan keris
-          </div>
-          <div class="dc-inspo-item">
-            <span class="emoji">💚</span>
-            Baju kurung hijau zamrud dengan kain batik songket dan pending emas
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════════════════════
-       FAQ
-  ══════════════════════════════════════════════════ -->
-  <section class="faq-section" id="faq">
-    <div class="container">
-      <div class="text-center reveal">
-        <span class="section-label">Soalan Lazim</span>
-        <h2 class="section-title">Ada Soalan? Kami Ada Jawapan</h2>
-        <div class="ornament-divider"><span>✦</span></div>
-      </div>
-
-      <div class="faq-list" id="faqList">
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span class="faq-q-text">Bilakah tarikh akhir pendaftaran RSVP?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Tarikh akhir pendaftaran RSVP adalah pada <strong style="color:var(--gold);">30 Oktober 2026</strong>. Anda amat digalakkan mendaftar lebih awal untuk memastikan tempat duduk anda terjamin. Selepas tarikh tersebut, pendaftaran adalah tertakluk kepada kekosongan tempat.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal delay-1">
-          <button class="faq-question">
-            <span class="faq-q-text">Adakah pakaian bukan tradisional Melayu dibenarkan?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Tema malam ini adalah <strong style="color:var(--gold);">Melayu Klasik (Bangsawan)</strong> dan semua tetamu amat digalakkan mematuhi kod pakaian yang ditetapkan. Tetamu bukan Melayu boleh memakai pakaian tradisional etnik masing-masing yang setara dengan tahap keformalannya. Sila hubungi Bentara COC sekiranya ada keraguan.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal delay-2">
-          <button class="faq-question">
-            <span class="faq-q-text">Apakah yang perlu dibawa pada malam majlis?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Sila bawa: (1) <strong style="color:var(--gold);">Kad pengenalan pekerja atau e-mel pengesahan RSVP</strong>, (2) Nombor pendaftaran RSVP anda, (3) Kad letak kereta COC untuk parkir istimewa. Pastikan anda tiba sebelum 7:30 PM untuk pengalaman terbaik.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span class="faq-q-text">Adakah tempat duduk tetap atau boleh pilih sendiri?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Tempat duduk adalah <strong style="color:var(--gold);">tetap mengikut pendaftaran</strong>. Anda boleh menyatakan permintaan tempat duduk (bersama rakan sekerja tertentu) semasa proses RSVP. Aturan tempat duduk akhir adalah tertakluk kepada keputusan Jawatankuasa Majlis.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal delay-1">
-          <button class="faq-question">
-            <span class="faq-q-text">Bolehkah saya membawa ahli keluarga atau tetamu peribadi?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Malam COC 2026 adalah majlis eksklusif untuk <strong style="color:var(--gold);">kakitangan COC dan tetamu jemputan rasmi</strong> sahaja. Kehadiran ahli keluarga atau tetamu peribadi adalah tertakluk kepada jemputan khas dan kelulusan Jawatankuasa. Sila hubungi Bentara COC untuk maklumat lanjut.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal delay-2">
-          <button class="faq-question">
-            <span class="faq-q-text">Apakah pilihan makanan untuk tetamu yang mempunyai keperluan pemakanan khas?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Semua makanan adalah <strong style="color:var(--gold);">halal</strong>. Kami turut menyediakan pilihan vegetarian. Sekiranya anda mempunyai alahan makanan atau keperluan pemakanan khas, sila nyatakan semasa pendaftaran RSVP agar kami dapat membuat persiapan yang sesuai.
-            </div>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question">
-            <span class="faq-q-text">Siapakah yang boleh saya hubungi untuk maklumat lanjut?</span>
-            <span class="faq-chevron">▼</span>
-          </button>
-          <div class="faq-answer">
-            <div class="faq-answer-inner">
-              Untuk sebarang pertanyaan, sila hubungi Jawatankuasa Bentara COC melalui <a href="contact.html" style="color:var(--gold); text-decoration:underline;">halaman Hubungi Kami</a>. Kami sedia membantu anda dari Isnin–Jumaat, 9:00 AM – 5:00 PM.
-            </div>
-          </div>
-        </div>
-      </div><!-- /faq-list -->
-
-      <div class="text-center" style="margin-top:48px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer"   class="btn btn-gold reveal">✦ Daftar RSVP</a>
-        <a href="contact.html" class="btn btn-outline reveal delay-1">Hubungi Kami</a>
       </div>
     </div>
   </section>
@@ -1389,7 +904,7 @@
       });
     });
     // Highlight active tab on scroll
-    const sections = ['overview','programme','venue','dresscode','faq'].map(id => document.getElementById(id));
+    const sections = ['programme','venue','dresscode'].map(id => document.getElementById(id));
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(s => {
@@ -1397,18 +912,6 @@
       });
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.target === current);
-      });
-    });
-
-    // ── FAQ accordion ──────────────────────────────────
-    document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        // Close all
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        // Open clicked if it was closed
-        if (!isOpen) item.classList.add('open');
       });
     });
   </script>

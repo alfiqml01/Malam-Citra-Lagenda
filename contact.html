@@ -471,9 +471,9 @@
       <div class="nav-links">
         <a href="index.html">Laman Utama</a>
         <a href="eventdetails.html">Butiran Acara</a>
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
         <a href="contact.html" class="active">Hubungi Kami</a>
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn">Daftar Sekarang</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Daftar Sekarang</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -482,9 +482,9 @@
     <div class="nav-mobile" id="mobileMenu">
       <a href="index.html">Laman Utama</a>
       <a href="eventdetails.html">Butiran Acara</a>
-      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
       <a href="contact.html" class="active">Hubungi Kami</a>
-      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);">✦ Daftar Sekarang</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Daftar Sekarang</a>
     </div>
   </nav>
 
@@ -620,7 +620,7 @@
         Jangan biarkan peluang ini berlalu. Daftar RSVP anda sebelum 30 Oktober 2026 dan jadikan diri sebahagian daripada legenda malam ini.
       </p>
       <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;" class="reveal delay-2">
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg">✦ Daftar RSVP Sekarang</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg rsvp-link">✦ Daftar RSVP Sekarang</a>
         <a href="eventdetails.html" class="btn btn-outline btn-lg">Lihat Butiran Acara</a>
       </div>
     </div>
@@ -636,11 +636,7 @@
       <div class="footer-links">
         <a href="index.html">Laman Utama</a>
         <a href="eventdetails.html">Butiran Acara</a>
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer">RSVP</a>
-        <a href="contact.html">Hubungi Kami</a>
-      </div>
-      <div class="footer-copy">
-        <strong>Jumaat, 20 November 2026 &nbsp;|&nbsp; 7:30 PM &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a> &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
         &copy; 2026 Malam COC — Citra Lagenda. Anjuran <strong>Bahagian COC</strong>.
       </div>
     </div>
@@ -706,6 +702,52 @@
       document.getElementById('inquirySuccess').classList.add('show');
       window.scrollTo({ top: document.getElementById('inquiry').offsetTop - 80, behavior: 'smooth' });
     }
+  </script>
+
+  <!-- ── EDGE MODAL ──────────────────────────────────── -->
+  <div class="edge-modal-backdrop" id="edgeModal" role="dialog" aria-modal="true" aria-labelledby="edgeModalTitle">
+    <div class="edge-modal">
+      <span class="edge-modal-icon">🌐</span>
+      <div class="edge-modal-title" id="edgeModalTitle">Buka dalam Microsoft Edge</div>
+      <p class="edge-modal-body">
+        Borang RSVP ini berfungsi <strong>terbaik dalam Microsoft Edge</strong>.<br>
+        Salin pautan di bawah dan tampalkan dalam pelayar Edge anda.
+      </p>
+      <div class="edge-modal-link-box">
+        <span class="edge-modal-link-text">https://forms.cloud.microsoft/r/A77bQ1tMZq</span>
+        <button class="edge-modal-copy-btn" id="edgeModalCopyBtn" onclick="edgeModalCopy()">Salin</button>
+      </div>
+      <div class="edge-modal-actions">
+        <button class="edge-modal-close" onclick="edgeModalClose()">Tutup</button>
+        <button class="edge-modal-open-btn" onclick="edgeModalClose(); window.open('https://forms.cloud.microsoft/r/A77bQ1tMZq','_blank','noopener,noreferrer')">Buka Terus</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const RSVP_URL = 'https://forms.cloud.microsoft/r/A77bQ1tMZq';
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    document.querySelectorAll('a.rsvp-link').forEach(a => {
+      a.addEventListener('click', e => {
+        if (isMobile) {
+          e.preventDefault();
+          document.getElementById('edgeModal').classList.add('open');
+        }
+      });
+    });
+    function edgeModalClose() {
+      document.getElementById('edgeModal').classList.remove('open');
+    }
+    function edgeModalCopy() {
+      navigator.clipboard.writeText(RSVP_URL).then(() => {
+        const btn = document.getElementById('edgeModalCopyBtn');
+        btn.textContent = '✓ Disalin!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Salin'; btn.classList.remove('copied'); }, 2500);
+      });
+    }
+    document.getElementById('edgeModal').addEventListener('click', e => {
+      if (e.target === document.getElementById('edgeModal')) edgeModalClose();
+    });
   </script>
 
 </body>

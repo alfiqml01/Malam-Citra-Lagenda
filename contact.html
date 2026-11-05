@@ -782,4 +782,70 @@
 
 </body>
 </html>
-
+  <!-- ── BACKGROUND MUSIC ────────────────────────────── -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music/Mahligai Permata.mp3" type="audio/mpeg">
+  </audio>
+  <button id="musicBtn" aria-label="Main / Henti Muzik" title="Main / Henti Muzik">⏸</button>
+  <style>
+    #musicBtn {
+      position: fixed; bottom: 28px; right: 28px; z-index: 8000;
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, #C9A84C, #8B6914);
+      border: 2px solid rgba(201,168,76,0.5);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: #1A0A00;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #musicBtn:hover { transform: scale(1.12); box-shadow: 0 6px 24px rgba(201,168,76,0.5); }
+    #musicBtn.paused {
+      background: linear-gradient(135deg, rgba(45,16,0,0.95), rgba(26,10,0,0.98));
+      border-color: rgba(201,168,76,0.4); color: #C9A84C;
+    }
+  </style>
+  <script>
+    (function () {
+      const audio = document.getElementById('bgMusic');
+      const btn   = document.getElementById('musicBtn');
+      let playing = false;
+      audio.volume = 0.4;
+      function setPlaying(state) {
+        playing = state;
+        btn.textContent = state ? '\u23F8' : '\u25B6';
+        btn.classList.toggle('paused', !state);
+        sessionStorage.setItem('musicPlaying', state ? '1' : '0');
+      }
+      function tryPlay() {
+        audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+      }
+      const savedTime  = parseFloat(sessionStorage.getItem('musicTime') || '0');
+      const wasPlaying = sessionStorage.getItem('musicPlaying') !== '0';
+      audio.addEventListener('canplay', function restore() {
+        audio.currentTime = savedTime;
+        audio.removeEventListener('canplay', restore);
+        if (wasPlaying) tryPlay(); else setPlaying(false);
+      }, { once: true });
+      window.addEventListener('pagehide', save);
+      window.addEventListener('beforeunload', save);
+      function save() {
+        sessionStorage.setItem('musicTime',    audio.currentTime);
+        sessionStorage.setItem('musicPlaying', playing ? '1' : '0');
+      }
+      function onFirst() {
+        if (!playing && wasPlaying) tryPlay();
+        ['click','keydown','touchstart','scroll','mousemove'].forEach(function(ev) {
+          document.removeEventListener(ev, onFirst);
+        });
+      }
+      ['click','keydown','touchstart','scroll','mousemove'].forEach(function(ev) {
+        document.addEventListener(ev, onFirst, { once: true });
+      });
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (playing) { audio.pause(); setPlaying(false); } else { tryPlay(); }
+      });
+    })();
+  </script>
+</body>
+</html>

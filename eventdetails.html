@@ -280,19 +280,15 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       position: relative;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 40px;
+      min-height: 440px;
+      padding: 0;
     }
     .venue-map-iframe {
       width: 100%;
-      height: 380px;
+      height: 100%;
+      min-height: 440px;
       border: none;
-      border-radius: var(--radius-lg);
+      display: block;
       filter: grayscale(0.3) sepia(0.2);
     }
     .venue-map-overlay {
@@ -438,22 +434,22 @@
         <span class="nav-logo-sub">Malam COC 2026</span>
       </a>
       <div class="nav-links">
-        <a href="index.html">Laman Utama</a>
+        <a href="index.html">Laman Persada</a>
         <a href="eventdetails.html" class="active">Butiran Acara</a>
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-        <a href="contact.html">Hubungi Kami</a>
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Daftar Sekarang</a>
+        <a href="contact.html">Bicara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Nyatakan Kehadiran</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile" id="mobileMenu">
-      <a href="index.html">Laman Utama</a>
+      <a href="index.html">Laman Persada</a>
       <a href="eventdetails.html" class="active">Butiran Acara</a>
       <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-      <a href="contact.html">Hubungi Kami</a>
-      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Daftar Sekarang</a>
+      <a href="contact.html">Bicara</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Nyatakan Kehadiran</a>
     </div>
   </nav>
 
@@ -476,9 +472,9 @@
   ══════════════════════════════════════════════════ -->
   <div style="background:var(--dark); padding: 40px 32px 0; position:sticky; top:0; z-index:50; border-bottom:1px solid var(--border-gold);">
     <div class="tab-nav" id="tabNav">
-      <button class="tab-btn active" data-target="programme">Aturcara</button>
+      <button class="tab-btn active" data-target="programme">Susunan Acara</button>
       <button class="tab-btn" data-target="venue">Tempat &amp; Hala Tuju</button>
-      <button class="tab-btn" data-target="dresscode">Kod Pakaian</button>
+      <button class="tab-btn" data-target="dresscode">Tatacara Berpakaian</button>
     </div>
   </div>
 
@@ -488,8 +484,8 @@
   <section class="programme-section" id="programme">
     <div class="container">
       <div class="text-center reveal">
-        <span class="section-label">Aturcara Malam</span>
-        <h2 class="section-title">Program Penuh Malam Citra Lagenda</h2>
+        <span class="section-label">Susunan Acara</span>
+        <h2 class="section-title">Atur Cara Malam Citra Lagenda</h2>
         <div class="ornament-divider"><span>🎭</span></div>
       </div>
 
@@ -764,25 +760,11 @@
                 <div class="venue-detail-value">Jumaat, 20 November 2026<br>7:00 PM – 11:00 PM</div>
               </div>
             </div>
-            <div class="venue-detail-row">
-              <div class="venue-detail-icon">🅿️</div>
-              <div>
-                <div class="venue-detail-label">Tempat Letak Kereta</div>
-                <div class="venue-detail-value">Parkir tersedia.</div>
-              </div>
-            </div>
-            <div class="venue-detail-row">
-              <div class="venue-detail-icon">📞</div>
-              <div>
-                <div class="venue-detail-label">Hubungi Hotel</div>
-                <div class="venue-detail-value">+603-XXXX XXXX</div>
-              </div>
-            </div>
           </div>
         </div>
 
         <!-- Map -->
-        <div class="venue-map reveal-right" style="padding:0; position:relative;">
+        <div class="venue-map reveal-right">
           <iframe
             class="venue-map-iframe"
             src="https://www.google.com/maps?q=IDEAS+Hotel+Kuala+Lumpur&output=embed"
@@ -834,7 +816,7 @@
   <section class="dresscode-section" id="dresscode">
     <div class="container">
       <div class="dresscode-simple reveal">
-        <span class="section-label">Kod Pakaian</span>
+        <span class="section-label">Tatacara Berpakaian</span>
         <div class="dresscode-icons" aria-hidden="true">
           <span>👘</span><span class="dresscode-icons-star">✦</span><span>👗</span>
         </div>
@@ -855,10 +837,10 @@
       <div class="footer-logo">Citra Lagenda</div>
       <div class="footer-tagline">Malam COC 2026 &nbsp;✦&nbsp; Melayu Klasik Bangsawan</div>
       <div class="footer-links">
-        <a href="index.html">Laman Utama</a>
+        <a href="index.html">Laman Persada</a>
         <a href="eventdetails.html">Butiran Acara</a>
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-        <a href="contact.html">Hubungi Kami</a>
+        <a href="contact.html">Bicara</a>
       </div>
       <div class="footer-copy">
         <strong>Jumaat, 20 November 2026 &nbsp;|&nbsp; 7:30 PM &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
@@ -964,3 +946,4 @@
 
 </body>
 </html>
+

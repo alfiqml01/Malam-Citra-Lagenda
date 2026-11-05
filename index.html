@@ -192,90 +192,196 @@
       50%       { transform: translateY(-10px); }
     }
 
-    /* ── COUNTDOWN ───────────────────────────────────────── */
-    .countdown-section {
-      background: linear-gradient(180deg, var(--dark) 0%, var(--dark-mid) 100%);
-      padding: 72px 0;
+    /* ══════════════════════════════════════════════════
+       COUNTDOWN — SPLIT-FLAP CLOCK (standalone CSS)
+    ══════════════════════════════════════════════════ */
+    .cd-section {
+      background: #0c0500;
+      padding: 72px 0 80px;
       position: relative;
       overflow: hidden;
     }
-    .countdown-section::before {
+    .cd-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L43 18 L54 18 L45 25 L48 36 L40 28 L32 36 L35 25 L26 18 L37 18 Z' fill='%23C9A84C' fill-opacity='0.03'/%3E%3C/svg%3E") repeat;
+      background: url("images/bg-pattern.jpg") center/cover no-repeat;
+      opacity: 0.06;
       pointer-events: none;
     }
-    .countdown-title {
-      font-family: var(--font-heading);
+    .cd-title {
+      font-family: 'Cinzel', serif;
       font-size: 0.72rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: #C9A84C;
       text-align: center;
-      margin-bottom: 40px;
+      margin: 0 0 48px;
     }
-    .countdown-grid {
+    .cd-row {
       display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: clamp(8px, 2.5vw, 24px);
+      padding: 0 16px;
     }
-    .countdown-unit {
-      text-align: center;
-      min-width: 110px;
+    /* ── individual unit ── */
+    .cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      flex: 0 0 auto;
     }
-    .countdown-box {
-      background: linear-gradient(180deg, rgba(45,16,0,0.8) 0%, rgba(26,10,0,0.9) 100%);
-      border: 1px solid var(--border-gold);
-      border-radius: var(--radius-md);
-      padding: 24px 20px 18px;
+    /* ── the two-digit card pair ── */
+    .cd-digits {
+      display: flex;
+      gap: 4px;
+    }
+    /* ── single digit card ── */
+    .cd-card {
+      width: clamp(44px, 11vw, 96px);
+      height: clamp(60px, 15vw, 128px);
       position: relative;
-      overflow: hidden;
-      animation: glow-pulse 3s ease-in-out infinite;
+      perspective: 400px;
     }
-    .countdown-box::before {
+    /* top half static (shows current digit, top portion) */
+    .cd-card-top,
+    .cd-card-bot {
+      position: absolute;
+      left: 0; right: 0;
+      overflow: hidden;
+      background: #1a0d00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px 4px 0 0;
+    }
+    .cd-card-top {
+      top: 0;
+      height: 50%;
+      border-bottom: 1.5px solid #000;
+      border-radius: 8px 8px 0 0;
+      box-shadow: inset 0 3px 10px rgba(0,0,0,0.8),
+                  0 1px 0 rgba(201,168,76,0.08);
+      background: linear-gradient(160deg, #2a1200 0%, #130800 100%);
+    }
+    .cd-card-bot {
+      bottom: 0;
+      height: 50%;
+      align-items: flex-start;
+      border-radius: 0 0 8px 8px;
+      box-shadow: inset 0 -3px 10px rgba(0,0,0,0.8);
+      background: linear-gradient(160deg, #110700 0%, #1e0d00 100%);
+    }
+    /* The number text inside top/bot — positioned so only the correct half shows */
+    .cd-card-top .cd-digit-txt {
+      transform: translateY(50%);
+    }
+    .cd-card-bot .cd-digit-txt {
+      transform: translateY(-50%);
+    }
+    .cd-digit-txt {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 6vw, 5rem);
+      color: #E8C97A;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgba(201,168,76,0.6);
+      letter-spacing: 0.02em;
+      user-select: none;
+      pointer-events: none;
+    }
+    /* outer card border + glow */
+    .cd-card::after {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      inset: 0;
+      border: 1.5px solid #C9A84C;
+      border-radius: 8px;
+      pointer-events: none;
+      box-shadow: 0 0 18px rgba(201,168,76,0.18),
+                  0 8px 32px rgba(0,0,0,0.75);
     }
-    .countdown-num {
-      font-family: var(--font-display);
-      font-size: clamp(2.4rem, 5vw, 3.2rem);
-      color: var(--gold-light);
-      line-height: 1;
-      text-shadow: 0 2px 16px rgba(201,168,76,0.5);
+    /* the flipping half-card */
+    .cd-flap {
+      position: absolute;
+      left: 0; right: 0;
+      height: 50%;
+      transform-origin: bottom center;
+      transform-style: preserve-3d;
+      z-index: 10;
+      pointer-events: none;
     }
-    .countdown-sep {
-      font-family: var(--font-display);
-      font-size: 2.8rem;
-      color: var(--gold);
-      opacity: 0.4;
-      align-self: flex-start;
-      padding-top: 24px;
-      line-height: 1;
+    .cd-flap.flip-top { top: 0; transform-origin: bottom center; }
+    .cd-flap.flip-bot { bottom: 0; transform-origin: top center; }
+    /* front/back of flap */
+    .cd-flap-face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .countdown-label {
-      font-family: var(--font-heading);
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
+    .cd-flap-face.front {
+      background: linear-gradient(160deg, #2a1200 0%, #130800 100%);
+      border-radius: 4px 4px 0 0;
+    }
+    .cd-flap-face.back {
+      background: linear-gradient(160deg, #110700 0%, #1e0d00 100%);
+      border-radius: 0 0 4px 4px;
+      transform: rotateX(180deg);
+    }
+    .cd-flap-face .cd-digit-txt { color: #E8C97A; }
+    .cd-flap-face.front .cd-digit-txt { transform: translateY(50%); }
+    .cd-flap-face.back  .cd-digit-txt { transform: translateY(-50%) rotateX(180deg); }
+    /* animation class added by JS */
+    .cd-flap.animating {
+      animation: sfFlip 0.22s cubic-bezier(0.4,0,0.2,1) forwards;
+    }
+    @keyframes sfFlip {
+      0%   { transform: rotateX(0deg); }
+      100% { transform: rotateX(-90deg); }
+    }
+    /* centre seam shadow */
+    .cd-seam {
+      position: absolute;
+      top: 50%;
+      left: 0; right: 0;
+      height: 3px;
+      background: #000;
+      transform: translateY(-50%);
+      z-index: 5;
+      pointer-events: none;
+    }
+    /* label */
+    .cd-label {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.5rem, 1.6vw, 0.72rem);
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-top: 10px;
-    }
-    .countdown-date-note {
+      color: #C9A84C;
       text-align: center;
-      margin-top: 32px;
-      font-family: var(--font-sub);
+    }
+    /* date note */
+    .cd-date {
+      text-align: center;
+      margin-top: 40px;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1rem;
-      color: var(--text-muted);
+      color: rgba(253,246,227,0.65);
     }
-    .countdown-date-note strong {
-      color: var(--gold-light);
+    .cd-date strong {
+      color: #E8C97A;
       font-style: normal;
+    }
+    @media (max-width: 480px) {
+      .cd-row { gap: 6px; padding: 0 8px; }
+      .cd-digits { gap: 3px; }
     }
 
     /* ── WARKAH / POEM SECTION ───────────────────────────── */
@@ -288,7 +394,8 @@
     .warkah-section::before {
       content: '';
       position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M50 10 L53 22 L65 22 L55 30 L59 42 L50 34 L41 42 L45 30 L35 22 L47 22 Z' fill='%23C9A84C' fill-opacity='0.04'/%3E%3C/svg%3E") repeat;
+      background: url("images/bg-pattern.jpg") center/cover no-repeat;
+      opacity: 0.08;
       pointer-events: none;
     }
     .warkah-card {
@@ -452,7 +559,7 @@
     .cta-section {
       background: 
         linear-gradient(135deg, rgba(139,0,0,0.9), rgba(26,10,0,0.95)),
-        url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M60 12L65 30H84L69 41L75 59L60 48L45 59L51 41L36 30H55Z' fill='%23C9A84C' fill-opacity='0.06'/%3E%3C/svg%3E") repeat;
+        url("images/bg-pattern.jpg") center/cover no-repeat;
       padding: 100px 0;
       text-align: center;
       position: relative;
@@ -500,9 +607,6 @@
     @media (max-width: 600px) {
       .hero { padding: 140px 20px 80px; }
       .warkah-card { padding: 40px 26px; }
-      .countdown-grid { gap: 8px; }
-      .countdown-unit { min-width: 72px; }
-      .countdown-sep { font-size: 2rem; padding-top: 20px; }
       .programme-section { padding: 64px 0; }
       .programme-timeline { margin-top: 40px; }
       .timeline-item { gap: 16px; padding-bottom: 26px; }
@@ -510,9 +614,8 @@
       .dresscode-icons { font-size: 2.6rem; gap: 16px; }
     }
     @media (max-width: 420px) {
-      .countdown-sep { display: none; }
-      .countdown-grid { gap: 12px; }
-      .countdown-unit { min-width: calc(50% - 6px); }
+      .countdown-sep { padding: 0 2px; padding-bottom: 24px; }
+      .countdown-box { padding: 12px 4px 10px; }
     }
   </style>
 </head>
@@ -548,25 +651,25 @@
     <div class="nav-inner">
       <a href="index.html" class="nav-logo">
         <span class="nav-logo-title">Citra Lagenda</span>
-        <span class="nav-logo-sub">Malam COC 2026</span>
+        <span class="nav-logo-sub">Channel Operations</span>
       </a>
       <div class="nav-links">
-        <a href="index.html" class="active">Laman Utama</a>
+        <a href="index.html" class="active">Laman Persada</a>
         <a href="eventdetails.html">Butiran Acara</a>
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-        <a href="contact.html">Hubungi Kami</a>
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Daftar Sekarang</a>
+        <a href="contact.html">Bicara</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Nyatakan Kehadiran</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile" id="mobileMenu">
-      <a href="index.html" class="active">Laman Utama</a>
+      <a href="index.html" class="active">Laman Persada</a>
       <a href="eventdetails.html">Butiran Acara</a>
       <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-      <a href="contact.html">Hubungi Kami</a>
-      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Daftar Sekarang</a>
+      <a href="contact.html">Bicara</a>
+      <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Nyatakan Kehadiran</a>
     </div>
   </nav>
 
@@ -608,7 +711,7 @@
     </svg>
 
     <div class="hero-content">
-      <div class="hero-eyebrow anim-up">Malam COC 2026</div>
+      <div class="hero-eyebrow anim-up">Channel Operations</div>
       <span class="hero-star anim-up delay-1">✦</span>
       <h1 class="hero-title anim-up delay-1">Citra Lagenda</h1>
       <p class="hero-subtitle anim-up delay-2">Tema: Melayu Klasik</p>
@@ -629,7 +732,7 @@
         </div>
       </div>
       <div class="hero-actions anim-up delay-4">
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg rsvp-link">✦ Daftar Sekarang</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg rsvp-link">✦ Nyatakan Kehadiran</a>
         <a href="eventdetails.html#dresscode" class="btn btn-outline">Panduan Pakaian</a>
       </div>
     </div>
@@ -643,39 +746,77 @@
   <!-- ══════════════════════════════════════════════════
        COUNTDOWN
   ══════════════════════════════════════════════════ -->
-  <section class="countdown-section" id="countdown">
+  <section class="cd-section" id="countdown">
     <div class="container">
-      <p class="countdown-title">✦ Kiraan Detik Menuju Malam Agung ✦</p>
-      <div class="countdown-grid">
-        <div class="countdown-unit">
-          <div class="countdown-box">
-            <div class="countdown-num" id="cd-days">00</div>
+      <p class="cd-title">✦ Kiraan Detik Menuju Malam Agung ✦</p>
+      <div class="cd-row">
+
+        <div class="cd-unit" data-unit="days">
+          <div class="cd-digits">
+            <div class="cd-card" data-pos="0">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
+            <div class="cd-card" data-pos="1">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
           </div>
-          <div class="countdown-label">Hari</div>
+          <div class="cd-label">Hari</div>
         </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-box">
-            <div class="countdown-num" id="cd-hours">00</div>
+
+        <div class="cd-unit" data-unit="hours">
+          <div class="cd-digits">
+            <div class="cd-card" data-pos="0">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
+            <div class="cd-card" data-pos="1">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
           </div>
-          <div class="countdown-label">Jam</div>
+          <div class="cd-label">Jam</div>
         </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-box">
-            <div class="countdown-num" id="cd-mins">00</div>
+
+        <div class="cd-unit" data-unit="mins">
+          <div class="cd-digits">
+            <div class="cd-card" data-pos="0">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
+            <div class="cd-card" data-pos="1">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
           </div>
-          <div class="countdown-label">Minit</div>
+          <div class="cd-label">Minit</div>
         </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <div class="countdown-box">
-            <div class="countdown-num" id="cd-secs">00</div>
+
+        <div class="cd-unit" data-unit="secs">
+          <div class="cd-digits">
+            <div class="cd-card" data-pos="0">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
+            <div class="cd-card" data-pos="1">
+              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
+              <div class="cd-seam"></div>
+              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            </div>
           </div>
-          <div class="countdown-label">Saat</div>
+          <div class="cd-label">Saat</div>
         </div>
+
       </div>
-      <p class="countdown-date-note">
+      <p class="cd-date">
         <strong>Jumaat, 20 November 2026 &mdash; 7:30 PM</strong><br>
         IDEAS Hotel Kuala Lumpur
       </p>
@@ -894,8 +1035,8 @@
         Daftarkan diri anda sekarang dan jadilah sebahagian daripada legenda malam yang akan terukir dalam sejarah COC.
       </p>
       <div class="cta-actions reveal delay-2">
-        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg rsvp-link">✦ Daftar Sekarang</a>
-        <a href="contact.html" class="btn btn-outline btn-lg">Hubungi Kami</a>
+        <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg rsvp-link">✦ Nyatakan Kehadiran</a>
+        <a href="contact.html" class="btn btn-outline btn-lg">Bicara</a>
       </div>
     </div>
   </section>
@@ -908,10 +1049,10 @@
       <div class="footer-logo">Citra Lagenda</div>
       <div class="footer-tagline">Malam COC 2026 &nbsp;✦&nbsp; Melayu Klasik Bangsawan</div>
       <div class="footer-links">
-        <a href="index.html">Laman Utama</a>
+        <a href="index.html">Laman Persada</a>
         <a href="eventdetails.html">Butiran Acara</a>
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-        <a href="contact.html">Hubungi Kami</a>
+        <a href="contact.html">Bicara</a>
       </div>
       <div class="footer-copy">
         <strong>Jumaat, 20 November 2026 &nbsp;|&nbsp; 7:30 PM &nbsp;|&nbsp; IDEAS Hotel Kuala Lumpur</strong><br>
@@ -938,29 +1079,129 @@
       mobileMenu.style.display = open ? 'none' : 'flex';
     });
 
-    // ── Countdown Timer ──────────────────────────────
-    const eventDate = new Date('2026-11-20T19:30:00+08:00');
-    function updateCountdown() {
-      const now  = new Date();
-      const diff = eventDate - now;
-      if (diff <= 0) {
-        document.getElementById('cd-days').textContent  = '00';
-        document.getElementById('cd-hours').textContent = '00';
-        document.getElementById('cd-mins').textContent  = '00';
-        document.getElementById('cd-secs').textContent  = '00';
-        return;
+    // ── Split-Flap Countdown ─────────────────────────
+    (function() {
+      const TARGET = new Date('2026-11-20T19:30:00+08:00');
+
+      // Track current displayed value per unit
+      const state = { days:'--', hours:'--', mins:'--', secs:'--' };
+
+      // Get all cards for a unit
+      function getCards(unitName) {
+        return document.querySelector(`.cd-unit[data-unit="${unitName}"]`)
+                       .querySelectorAll('.cd-card');
       }
-      const days  = Math.floor(diff / 86400000);
-      const hours = Math.floor((diff % 86400000) / 3600000);
-      const mins  = Math.floor((diff % 3600000)  / 60000);
-      const secs  = Math.floor((diff % 60000)    / 1000);
-      document.getElementById('cd-days').textContent  = String(days).padStart(2,'0');
-      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
-      document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
-      document.getElementById('cd-secs').textContent  = String(secs).padStart(2,'0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+
+      // Set a card's static display (top+bot halves) without animation
+      function setCard(card, digit) {
+        card.querySelector('.cd-card-top .cd-digit-txt').textContent = digit;
+        card.querySelector('.cd-card-bot .cd-digit-txt').textContent = digit;
+        card._current = digit;
+      }
+
+      // Animate a single card from oldDigit → newDigit
+      function flipCard(card, oldDigit, newDigit, done) {
+        // Already showing this digit — skip
+        if (oldDigit === newDigit) { done && done(); return; }
+
+        // Create flap element
+        const flap = document.createElement('div');
+        flap.className = 'cd-flap flip-top';
+
+        const front = document.createElement('div');
+        front.className = 'cd-flap-face front';
+        front.innerHTML = `<span class="cd-digit-txt">${oldDigit}</span>`;
+
+        const back = document.createElement('div');
+        back.className = 'cd-flap-face back';
+        back.innerHTML = `<span class="cd-digit-txt">${newDigit}</span>`;
+
+        flap.appendChild(front);
+        flap.appendChild(back);
+        card.appendChild(flap);
+
+        // Update static bottom half to new digit immediately (hidden under flap)
+        card.querySelector('.cd-card-bot .cd-digit-txt').textContent = newDigit;
+
+        // Trigger animation
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            flap.classList.add('animating');
+          });
+        });
+
+        flap.addEventListener('animationend', () => {
+          // Update static top half
+          card.querySelector('.cd-card-top .cd-digit-txt').textContent = newDigit;
+          card._current = newDigit;
+          flap.remove();
+          done && done();
+        }, { once: true });
+      }
+
+      // Update a two-digit unit (dd string like "07")
+      function updateUnit(unitName, dd) {
+        const cards = getCards(unitName);
+        const digits = dd.split('');
+        digits.forEach((digit, i) => {
+          const card = cards[i];
+          const old = card._current || '0';
+          flipCard(card, old, digit);
+        });
+      }
+
+      // Init all cards
+      ['days','hours','mins','secs'].forEach(u => {
+        getCards(u).forEach(c => { c._current = '0'; });
+      });
+
+      // Tick
+      function tick() {
+        const now  = new Date();
+        const diff = TARGET - now;
+        let days, hours, mins, secs;
+        if (diff <= 0) {
+          days = hours = mins = secs = 0;
+        } else {
+          days  = Math.floor(diff / 86400000);
+          hours = Math.floor((diff % 86400000) / 3600000);
+          mins  = Math.floor((diff % 3600000)  / 60000);
+          secs  = Math.floor((diff % 60000)    / 1000);
+        }
+        const dd = String(days).padStart(2,'0');
+        const hh = String(hours).padStart(2,'0');
+        const mm = String(mins).padStart(2,'0');
+        const ss = String(secs).padStart(2,'0');
+
+        if (dd !== state.days)  { updateUnit('days',  dd); state.days  = dd; }
+        if (hh !== state.hours) { updateUnit('hours', hh); state.hours = hh; }
+        if (mm !== state.mins)  { updateUnit('mins',  mm); state.mins  = mm; }
+        if (ss !== state.secs)  { updateUnit('secs',  ss); state.secs  = ss; }
+      }
+
+      // Initial render without animation
+      (function initRender() {
+        const now  = new Date();
+        const diff = TARGET - now;
+        const days  = diff > 0 ? Math.floor(diff / 86400000) : 0;
+        const hours = diff > 0 ? Math.floor((diff % 86400000) / 3600000) : 0;
+        const mins  = diff > 0 ? Math.floor((diff % 3600000)  / 60000) : 0;
+        const secs  = diff > 0 ? Math.floor((diff % 60000)    / 1000) : 0;
+        const vals = {
+          days:  String(days).padStart(2,'0'),
+          hours: String(hours).padStart(2,'0'),
+          mins:  String(mins).padStart(2,'0'),
+          secs:  String(secs).padStart(2,'0')
+        };
+        ['days','hours','mins','secs'].forEach(u => {
+          const cards = getCards(u);
+          vals[u].split('').forEach((d, i) => setCard(cards[i], d));
+          state[u] = vals[u];
+        });
+      })();
+
+      setInterval(tick, 1000);
+    })();
 
     // ── Scroll-reveal ────────────────────────────────
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
@@ -1023,3 +1264,4 @@
 
 </body>
 </html>
+

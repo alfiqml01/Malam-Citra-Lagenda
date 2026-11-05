@@ -361,9 +361,14 @@
       align-items: center;
       justify-content: center;
       gap: 22px;
-      font-size: 3rem;
       margin-bottom: 18px;
       line-height: 1;
+    }
+    .dresscode-icons img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(201,168,76,0.25));
     }
     .dresscode-icons-star {
       color: var(--gold);
@@ -508,7 +513,7 @@
       .programme-timeline { margin-top: 40px; }
       .timeline-item { gap: 16px; padding-bottom: 26px; }
       .dresscode-section { padding: 64px 0; }
-      .dresscode-icons { font-size: 2.6rem; gap: 16px; }
+      .dresscode-icons img { width: 42px; height: 42px; }
     }
     @media (max-width: 420px) {
       .countdown-sep { display: none; }
@@ -873,7 +878,7 @@
       <div class="dresscode-simple reveal">
         <span class="section-label">Kod Pakaian</span>
         <div class="dresscode-icons" aria-hidden="true">
-          <span>👘</span><span class="dresscode-icons-star">✦</span><span>👗</span>
+          <img src="images/man.png" alt=""><span class="dresscode-icons-star">✦</span><img src="images/woman.png" alt="">
         </div>
         <h2 class="section-title">Melayu Klasik</h2>
         <div class="ornament-divider"><span>👑</span></div>

@@ -192,8 +192,8 @@
       50%       { transform: translateY(-10px); }
     }
 
-    /* ══════════════════════════════════════════════════
-       COUNTDOWN — SPLIT-FLAP CLOCK (standalone CSS)
+        /* ══════════════════════════════════════════════════
+       COUNTDOWN — SPLIT-FLAP CLOCK  (standalone)
     ══════════════════════════════════════════════════ */
     .cd-section {
       background: #0c0500;
@@ -224,10 +224,9 @@
       flex-wrap: nowrap;
       justify-content: center;
       align-items: flex-start;
-      gap: clamp(8px, 2.5vw, 24px);
+      gap: clamp(12px, 3vw, 32px);
       padding: 0 16px;
     }
-    /* ── individual unit ── */
     .cd-unit {
       display: flex;
       flex-direction: column;
@@ -235,138 +234,121 @@
       gap: 14px;
       flex: 0 0 auto;
     }
-    /* ── the two-digit card pair ── */
-    .cd-digits {
-      display: flex;
-      gap: 4px;
-    }
+    .cd-digits { display: flex; gap: 5px; }
+
     /* ── single digit card ── */
-    .cd-card {
-      width: clamp(44px, 11vw, 96px);
-      height: clamp(60px, 15vw, 128px);
+    .sf-card {
       position: relative;
-      perspective: 400px;
+      width:  clamp(48px, 12vw, 100px);
+      height: clamp(64px, 16vw, 134px);
+      border-radius: 8px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+      perspective: 600px;
     }
-    /* top half static (shows current digit, top portion) */
-    .cd-card-top,
-    .cd-card-bot {
+    .sf-upper, .sf-lower {
       position: absolute;
       left: 0; right: 0;
+      height: 50%;
       overflow: hidden;
-      background: #1a0d00;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 4px 4px 0 0;
     }
-    .cd-card-top {
+    .sf-upper {
       top: 0;
-      height: 50%;
-      border-bottom: 1.5px solid #000;
       border-radius: 8px 8px 0 0;
-      box-shadow: inset 0 3px 10px rgba(0,0,0,0.8),
-                  0 1px 0 rgba(201,168,76,0.08);
-      background: linear-gradient(160deg, #2a1200 0%, #130800 100%);
+      border-bottom: 2px solid #000;
+      background: linear-gradient(175deg, #2a1400 0%, #160900 100%);
+      box-shadow: inset 0 4px 14px rgba(0,0,0,0.7);
     }
-    .cd-card-bot {
+    .sf-lower {
       bottom: 0;
-      height: 50%;
-      align-items: flex-start;
       border-radius: 0 0 8px 8px;
-      box-shadow: inset 0 -3px 10px rgba(0,0,0,0.8);
-      background: linear-gradient(160deg, #110700 0%, #1e0d00 100%);
+      align-items: flex-start;
+      background: linear-gradient(175deg, #130800 0%, #1e0d00 100%);
+      box-shadow: inset 0 -4px 14px rgba(0,0,0,0.6);
     }
-    /* The number text inside top/bot — positioned so only the correct half shows */
-    .cd-card-top .cd-digit-txt {
-      transform: translateY(50%);
-    }
-    .cd-card-bot .cd-digit-txt {
-      transform: translateY(-50%);
-    }
-    .cd-digit-txt {
+    .sf-upper .sf-n { transform: translateY(50%); }
+    .sf-lower .sf-n { transform: translateY(-50%); }
+    .sf-n {
       font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(1.8rem, 6vw, 5rem);
+      font-size: clamp(1.9rem, 6.5vw, 5.4rem);
       color: #E8C97A;
       line-height: 1;
-      text-shadow: 0 2px 12px rgba(201,168,76,0.6);
+      text-shadow: 0 2px 14px rgba(201,168,76,0.7);
       letter-spacing: 0.02em;
       user-select: none;
       pointer-events: none;
+      display: block;
     }
-    /* outer card border + glow */
-    .cd-card::after {
+    .sf-card::before {
       content: '';
       position: absolute;
       inset: 0;
-      border: 1.5px solid #C9A84C;
+      border: 1.5px solid rgba(201,168,76,0.55);
       border-radius: 8px;
       pointer-events: none;
-      box-shadow: 0 0 18px rgba(201,168,76,0.18),
-                  0 8px 32px rgba(0,0,0,0.75);
+      z-index: 20;
+      box-shadow: 0 0 16px rgba(201,168,76,0.12);
     }
-    /* the flipping half-card */
-    .cd-flap {
+    .sf-seam {
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 2px;
+      background: #000;
+      transform: translateY(-50%);
+      z-index: 15;
+      pointer-events: none;
+    }
+    /* ── flap panels ── */
+    .sf-flap-top, .sf-flap-bot {
       position: absolute;
       left: 0; right: 0;
       height: 50%;
-      transform-origin: bottom center;
+      overflow: hidden;
       transform-style: preserve-3d;
       z-index: 10;
       pointer-events: none;
     }
-    .cd-flap.flip-top { top: 0; transform-origin: bottom center; }
-    .cd-flap.flip-bot { bottom: 0; transform-origin: top center; }
-    /* front/back of flap */
-    .cd-flap-face {
+    .sf-flap-top { top: 0;    transform-origin: center bottom; }
+    .sf-flap-bot { bottom: 0; transform-origin: center top; }
+    .sf-front, .sf-back {
       position: absolute;
       inset: 0;
-      backface-visibility: hidden;
       overflow: hidden;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    .cd-flap-face.front {
-      background: linear-gradient(160deg, #2a1200 0%, #130800 100%);
-      border-radius: 4px 4px 0 0;
-    }
-    .cd-flap-face.back {
-      background: linear-gradient(160deg, #110700 0%, #1e0d00 100%);
-      border-radius: 0 0 4px 4px;
-      transform: rotateX(180deg);
-    }
-    .cd-flap-face .cd-digit-txt { color: #E8C97A; }
-    .cd-flap-face.front .cd-digit-txt { transform: translateY(50%); }
-    .cd-flap-face.back  .cd-digit-txt { transform: translateY(-50%) rotateX(180deg); }
-    /* animation class added by JS */
-    .cd-flap.animating {
-      animation: sfFlip 0.22s cubic-bezier(0.4,0,0.2,1) forwards;
-    }
-    @keyframes sfFlip {
-      0%   { transform: rotateX(0deg); }
-      100% { transform: rotateX(-90deg); }
-    }
-    /* centre seam shadow */
-    .cd-seam {
-      position: absolute;
-      top: 50%;
-      left: 0; right: 0;
-      height: 3px;
-      background: #000;
-      transform: translateY(-50%);
-      z-index: 5;
-      pointer-events: none;
-    }
-    /* label */
+    .sf-flap-bot .sf-front,
+    .sf-flap-bot .sf-back { align-items: flex-start; }
+    /* top flap colours */
+    .sf-flap-top .sf-front { background: linear-gradient(175deg, #2a1400, #160900); border-radius: 8px 8px 0 0; }
+    .sf-flap-top .sf-back  { background: linear-gradient(175deg, #130800, #1e0d00); border-radius: 0 0 8px 8px; transform: rotateX(180deg); align-items: flex-start; }
+    /* bot flap colours */
+    .sf-flap-bot .sf-front { background: linear-gradient(175deg, #130800, #1e0d00); border-radius: 0 0 8px 8px; }
+    .sf-flap-bot .sf-back  { background: linear-gradient(175deg, #2a1400, #160900); border-radius: 8px 8px 0 0; transform: rotateX(180deg); align-items: center; }
+    /* digit positions on flap faces */
+    .sf-flap-top .sf-front .sf-n { transform: translateY(50%); }
+    .sf-flap-top .sf-back  .sf-n { transform: translateY(-50%) rotateX(180deg); }
+    .sf-flap-bot .sf-front .sf-n { transform: translateY(-50%); }
+    .sf-flap-bot .sf-back  .sf-n { transform: translateY(50%) rotateX(180deg); }
+    /* keyframes */
+    @keyframes sfDown { 0% { transform: rotateX(0deg); } 100% { transform: rotateX(-90deg); } }
+    @keyframes sfUp   { 0% { transform: rotateX(90deg); } 100% { transform: rotateX(0deg); } }
+    .sf-flap-top.fold   { animation: sfDown 0.25s cubic-bezier(0.4,0,1,1) forwards; }
+    .sf-flap-bot.unfold { animation: sfUp   0.25s cubic-bezier(0,0,0.6,1) 0.24s forwards; }
+
     .cd-label {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.5rem, 1.6vw, 0.72rem);
+      font-size: clamp(0.52rem, 1.6vw, 0.72rem);
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #C9A84C;
       text-align: center;
     }
-    /* date note */
     .cd-date {
       text-align: center;
       margin-top: 40px;
@@ -375,15 +357,11 @@
       font-size: 1rem;
       color: rgba(253,246,227,0.65);
     }
-    .cd-date strong {
-      color: #E8C97A;
-      font-style: normal;
-    }
+    .cd-date strong { color: #E8C97A; font-style: normal; }
     @media (max-width: 480px) {
-      .cd-row { gap: 6px; padding: 0 8px; }
+      .cd-row { gap: 8px; padding: 0 8px; }
       .cd-digits { gap: 3px; }
     }
-
     /* ── WARKAH / POEM SECTION ───────────────────────────── */
     .warkah-section {
       background: linear-gradient(135deg, var(--dark-mid) 0%, var(--crimson-deep) 50%, var(--dark-mid) 100%);
@@ -748,20 +726,20 @@
   ══════════════════════════════════════════════════ -->
   <section class="cd-section" id="countdown">
     <div class="container">
-      <p class="cd-title">✦ Kiraan Detik Menuju Malam Agung ✦</p>
+      <p class="cd-title">&#x2756; Kiraan Detik Menuju Malam Agung &#x2756;</p>
       <div class="cd-row">
 
         <div class="cd-unit" data-unit="days">
           <div class="cd-digits">
-            <div class="cd-card" data-pos="0">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
-            <div class="cd-card" data-pos="1">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
           </div>
           <div class="cd-label">Hari</div>
@@ -769,15 +747,15 @@
 
         <div class="cd-unit" data-unit="hours">
           <div class="cd-digits">
-            <div class="cd-card" data-pos="0">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
-            <div class="cd-card" data-pos="1">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
           </div>
           <div class="cd-label">Jam</div>
@@ -785,15 +763,15 @@
 
         <div class="cd-unit" data-unit="mins">
           <div class="cd-digits">
-            <div class="cd-card" data-pos="0">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
-            <div class="cd-card" data-pos="1">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
           </div>
           <div class="cd-label">Minit</div>
@@ -801,15 +779,15 @@
 
         <div class="cd-unit" data-unit="secs">
           <div class="cd-digits">
-            <div class="cd-card" data-pos="0">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
-            <div class="cd-card" data-pos="1">
-              <div class="cd-card-top"><span class="cd-digit-txt">0</span></div>
-              <div class="cd-seam"></div>
-              <div class="cd-card-bot"><span class="cd-digit-txt">0</span></div>
+            <div class="sf-card">
+              <div class="sf-upper"><span class="sf-n">0</span></div>
+              <div class="sf-seam"></div>
+              <div class="sf-lower"><span class="sf-n">0</span></div>
             </div>
           </div>
           <div class="cd-label">Saat</div>
@@ -1080,129 +1058,115 @@
     });
 
     // ── Split-Flap Countdown ─────────────────────────
-    (function() {
-      const TARGET = new Date('2026-11-20T19:30:00+08:00');
+    (function () {
+      var TARGET = new Date('2026-11-20T19:30:00+08:00');
+      var state  = { days: '--', hours: '--', mins: '--', secs: '--' };
 
-      // Track current displayed value per unit
-      const state = { days:'--', hours:'--', mins:'--', secs:'--' };
-
-      // Get all cards for a unit
-      function getCards(unitName) {
-        return document.querySelector(`.cd-unit[data-unit="${unitName}"]`)
-                       .querySelectorAll('.cd-card');
+      function cards(unit) {
+        return [].slice.call(
+          document.querySelector('.cd-unit[data-unit="' + unit + '"]')
+            .querySelectorAll('.sf-card')
+        );
       }
 
-      // Set a card's static display (top+bot halves) without animation
-      function setCard(card, digit) {
-        card.querySelector('.cd-card-top .cd-digit-txt').textContent = digit;
-        card.querySelector('.cd-card-bot .cd-digit-txt').textContent = digit;
-        card._current = digit;
+      // silently set a card to a digit
+      function setCard(card, d) {
+        card.querySelectorAll('.sf-upper .sf-n, .sf-lower .sf-n')
+            .forEach(function(n){ n.textContent = d; });
+        card._cur = d;
       }
 
-      // Animate a single card from oldDigit → newDigit
-      function flipCard(card, oldDigit, newDigit, done) {
-        // Already showing this digit — skip
-        if (oldDigit === newDigit) { done && done(); return; }
+      // full 4-panel flip: top folds down, bot unfolds up
+      function flip(card, oldD, newD) {
+        if (oldD === newD) return;
 
-        // Create flap element
-        const flap = document.createElement('div');
-        flap.className = 'cd-flap flip-top';
+        // Build top flap (folds down): front=old top, back=new bottom
+        var ft = document.createElement('div');
+        ft.className = 'sf-flap-top';
+        ft.innerHTML =
+          '<div class="sf-front"><span class="sf-n">' + oldD + '</span></div>' +
+          '<div class="sf-back"><span class="sf-n">'  + newD + '</span></div>';
 
-        const front = document.createElement('div');
-        front.className = 'cd-flap-face front';
-        front.innerHTML = `<span class="cd-digit-txt">${oldDigit}</span>`;
+        // Build bot flap (unfolds up): front=new bot, back=old
+        var fb = document.createElement('div');
+        fb.className = 'sf-flap-bot';
+        fb.innerHTML =
+          '<div class="sf-front"><span class="sf-n">' + newD + '</span></div>' +
+          '<div class="sf-back"><span class="sf-n">'  + oldD + '</span></div>';
 
-        const back = document.createElement('div');
-        back.className = 'cd-flap-face back';
-        back.innerHTML = `<span class="cd-digit-txt">${newDigit}</span>`;
+        // Update static upper to old (stays until fold completes)
+        card.querySelector('.sf-upper .sf-n').textContent = oldD;
+        // Update static lower to new immediately (hidden under bot flap)
+        card.querySelector('.sf-lower .sf-n').textContent = newD;
 
-        flap.appendChild(front);
-        flap.appendChild(back);
-        card.appendChild(flap);
+        card.appendChild(ft);
+        card.appendChild(fb);
 
-        // Update static bottom half to new digit immediately (hidden under flap)
-        card.querySelector('.cd-card-bot .cd-digit-txt').textContent = newDigit;
-
-        // Trigger animation
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            flap.classList.add('animating');
+        // Start top fold
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            ft.classList.add('fold');
+            fb.classList.add('unfold');
           });
         });
 
-        flap.addEventListener('animationend', () => {
-          // Update static top half
-          card.querySelector('.cd-card-top .cd-digit-txt').textContent = newDigit;
-          card._current = newDigit;
-          flap.remove();
-          done && done();
+        // After top fold completes, update upper to new
+        ft.addEventListener('animationend', function() {
+          card.querySelector('.sf-upper .sf-n').textContent = newD;
+          ft.remove();
+        }, { once: true });
+
+        // After bot unfold completes, clean up
+        fb.addEventListener('animationend', function() {
+          fb.remove();
+          card._cur = newD;
         }, { once: true });
       }
 
-      // Update a two-digit unit (dd string like "07")
-      function updateUnit(unitName, dd) {
-        const cards = getCards(unitName);
-        const digits = dd.split('');
-        digits.forEach((digit, i) => {
-          const card = cards[i];
-          const old = card._current || '0';
-          flipCard(card, old, digit);
+      function update(unit, dd) {
+        cards(unit).forEach(function(card, i){
+          flip(card, card._cur || '0', dd[i]);
         });
       }
 
-      // Init all cards
-      ['days','hours','mins','secs'].forEach(u => {
-        getCards(u).forEach(c => { c._current = '0'; });
+      // init without animation
+      ['days','hours','mins','secs'].forEach(function(u){
+        cards(u).forEach(function(c){ c._cur = '0'; });
       });
 
-      // Tick
       function tick() {
-        const now  = new Date();
-        const diff = TARGET - now;
-        let days, hours, mins, secs;
-        if (diff <= 0) {
-          days = hours = mins = secs = 0;
-        } else {
-          days  = Math.floor(diff / 86400000);
-          hours = Math.floor((diff % 86400000) / 3600000);
-          mins  = Math.floor((diff % 3600000)  / 60000);
-          secs  = Math.floor((diff % 60000)    / 1000);
-        }
-        const dd = String(days).padStart(2,'0');
-        const hh = String(hours).padStart(2,'0');
-        const mm = String(mins).padStart(2,'0');
-        const ss = String(secs).padStart(2,'0');
-
-        if (dd !== state.days)  { updateUnit('days',  dd); state.days  = dd; }
-        if (hh !== state.hours) { updateUnit('hours', hh); state.hours = hh; }
-        if (mm !== state.mins)  { updateUnit('mins',  mm); state.mins  = mm; }
-        if (ss !== state.secs)  { updateUnit('secs',  ss); state.secs  = ss; }
+        var diff = TARGET - new Date();
+        var d = diff > 0 ? Math.floor(diff / 86400000) : 0;
+        var h = diff > 0 ? Math.floor((diff % 86400000) / 3600000) : 0;
+        var m = diff > 0 ? Math.floor((diff % 3600000)  / 60000) : 0;
+        var s = diff > 0 ? Math.floor((diff % 60000)    / 1000) : 0;
+        var dd = ('0'+d).slice(-2), hh = ('0'+h).slice(-2);
+        var mm = ('0'+m).slice(-2), ss = ('0'+s).slice(-2);
+        if (dd !== state.days)  { update('days',  dd); state.days  = dd; }
+        if (hh !== state.hours) { update('hours', hh); state.hours = hh; }
+        if (mm !== state.mins)  { update('mins',  mm); state.mins  = mm; }
+        if (ss !== state.secs)  { update('secs',  ss); state.secs  = ss; }
       }
 
-      // Initial render without animation
-      (function initRender() {
-        const now  = new Date();
-        const diff = TARGET - now;
-        const days  = diff > 0 ? Math.floor(diff / 86400000) : 0;
-        const hours = diff > 0 ? Math.floor((diff % 86400000) / 3600000) : 0;
-        const mins  = diff > 0 ? Math.floor((diff % 3600000)  / 60000) : 0;
-        const secs  = diff > 0 ? Math.floor((diff % 60000)    / 1000) : 0;
-        const vals = {
-          days:  String(days).padStart(2,'0'),
-          hours: String(hours).padStart(2,'0'),
-          mins:  String(mins).padStart(2,'0'),
-          secs:  String(secs).padStart(2,'0')
+      // silent first render
+      (function initRender(){
+        var diff = TARGET - new Date();
+        var vals = {
+          days:  ('0'+(diff>0?Math.floor(diff/86400000):0)).slice(-2),
+          hours: ('0'+(diff>0?Math.floor((diff%86400000)/3600000):0)).slice(-2),
+          mins:  ('0'+(diff>0?Math.floor((diff%3600000)/60000):0)).slice(-2),
+          secs:  ('0'+(diff>0?Math.floor((diff%60000)/1000):0)).slice(-2)
         };
-        ['days','hours','mins','secs'].forEach(u => {
-          const cards = getCards(u);
-          vals[u].split('').forEach((d, i) => setCard(cards[i], d));
+        ['days','hours','mins','secs'].forEach(function(u){
+          cards(u).forEach(function(card, i){
+            setCard(card, vals[u][i]);
+          });
           state[u] = vals[u];
         });
       })();
 
       setInterval(tick, 1000);
     })();
-
     // ── Scroll-reveal ────────────────────────────────
     const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     const io = new IntersectionObserver((entries) => {
@@ -1264,4 +1228,6 @@
 
 </body>
 </html>
+
+
 

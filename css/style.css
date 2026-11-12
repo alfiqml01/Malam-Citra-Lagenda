@@ -208,6 +208,32 @@ button { cursor: pointer; font-family: var(--font-heading); }
   color: var(--dark) !important;
 }
 .nav-cta::after { display: none !important; }
+
+/* ── Vote nav pill ── */
+.nav-vote {
+  font-family: var(--font-heading) !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.12em !important;
+  background: linear-gradient(135deg, var(--crimson-light), var(--crimson-deep)) !important;
+  color: var(--gold-light) !important;
+  border: 1.5px solid var(--gold) !important;
+  border-radius: 999px !important;
+  padding: 10px 20px !important;
+  font-weight: 600;
+  box-shadow: 0 0 10px rgba(139,0,0,0.5), inset 0 1px 0 rgba(201,168,76,0.2) !important;
+  animation: voteGlow 2s ease-in-out infinite;
+  transition: transform var(--transition), box-shadow var(--transition) !important;
+}
+.nav-vote:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(139,0,0,0.65), inset 0 1px 0 rgba(201,168,76,0.2) !important;
+  color: var(--gold-light) !important;
+}
+.nav-vote::after { display: none !important; }
+@keyframes voteGlow {
+  0%, 100% { box-shadow: 0 0 8px 0 rgba(178,34,34,0.4), inset 0 1px 0 rgba(201,168,76,0.2); }
+  50%       { box-shadow: 0 0 18px 4px rgba(178,34,34,0.7), inset 0 1px 0 rgba(201,168,76,0.2); }
+}
 .nav-hamburger {
   display: none;
   flex-direction: column;

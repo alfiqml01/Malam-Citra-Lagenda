@@ -444,6 +444,7 @@
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
         <a href="contact.html">Bicara</a>
         <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="nav-cta btn rsvp-link">Nyatakan Kehadiran</a>
+        <a href="https://forms.cloud.microsoft/r/s0qsirqYM3" target="_blank" rel="noopener noreferrer" class="nav-vote vote-link">🏆 Undi Anugerah</a>
       </div>
       <button class="nav-hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -453,8 +454,9 @@
       <a href="index.html">Laman Persada</a>
       <a href="eventdetails.html" class="active">Butiran Acara</a>
       <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" class="rsvp-link">RSVP</a>
-      <a href="contact.html">Bicara</a>
+        <a href="contact.html">Bicara</a>
       <a href="https://forms.cloud.microsoft/r/A77bQ1tMZq" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="rsvp-link">✦ Nyatakan Kehadiran</a>
+      <a href="https://forms.cloud.microsoft/r/s0qsirqYM3" target="_blank" rel="noopener noreferrer" style="color:var(--gold-light);" class="vote-link">🏆 Undi Anugerah</a>
     </div>
   </nav>
 
@@ -914,8 +916,7 @@
         <button class="edge-modal-copy-btn" id="edgeModalCopyBtn" onclick="edgeModalCopy()">Salin</button>
       </div>
       <div class="edge-modal-actions">
-        <button class="edge-modal-close" onclick="edgeModalClose()">Tutup</button>
-        <button class="edge-modal-open-btn" onclick="edgeModalClose(); window.open('https://forms.cloud.microsoft/r/A77bQ1tMZq','_blank','noopener,noreferrer')">Buka Terus</button>
+        <button class="edge-modal-open-btn" onclick="edgeModalClose()">Tutup</button>
       </div>
     </div>
   </div>
@@ -948,6 +949,51 @@
 
 </body>
 </html>
+
+  <!-- ── VOTE MODAL ──────────────────────────────────── -->
+  <div class="edge-modal-backdrop" id="voteModal" role="dialog" aria-modal="true" aria-labelledby="voteModalTitle">
+    <div class="edge-modal">
+      <span class="edge-modal-icon">🏆</span>
+      <div class="edge-modal-title" id="voteModalTitle">Undi Anugerah</div>
+      <p class="edge-modal-body">
+        Borang pengundian ini berfungsi <strong>terbaik dalam Microsoft Edge</strong>.<br>
+        Salin pautan di bawah dan tampalkan dalam pelayar Edge anda.
+      </p>
+      <div class="edge-modal-link-box">
+        <span class="edge-modal-link-text">https://forms.cloud.microsoft/r/s0qsirqYM3</span>
+        <button class="edge-modal-copy-btn" id="voteModalCopyBtn" onclick="voteModalCopy()">Salin</button>
+      </div>
+      <div class="edge-modal-actions">
+        <button class="edge-modal-open-btn" onclick="voteModalClose()">Tutup</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const VOTE_URL   = 'https://forms.cloud.microsoft/r/s0qsirqYM3';
+    const isMobileV  = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    document.querySelectorAll('a.vote-link').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        if (isMobileV) {
+          e.preventDefault();
+          document.getElementById('voteModal').classList.add('open');
+        }
+      });
+    });
+    function voteModalClose() {
+      document.getElementById('voteModal').classList.remove('open');
+    }
+    function voteModalCopy() {
+      navigator.clipboard.writeText(VOTE_URL).then(function() {
+        var btn = document.getElementById('voteModalCopyBtn');
+        btn.textContent = 'Disalin!';
+        btn.classList.add('copied');
+        setTimeout(function() { btn.textContent = 'Salin'; btn.classList.remove('copied'); }, 2500);
+      });
+    }
+    document.getElementById('voteModal').addEventListener('click', function(e) {
+      if (e.target === document.getElementById('voteModal')) voteModalClose();
+    });
+  </script>
   <!-- ── BACKGROUND MUSIC ────────────────────────────── -->
   <audio id="bgMusic" loop preload="auto">
     <source src="music/Mahligai Permata.mp3" type="audio/mpeg">
@@ -1015,3 +1061,10 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+

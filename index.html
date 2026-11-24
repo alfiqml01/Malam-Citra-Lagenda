@@ -719,6 +719,131 @@
   </nav>
 
   <!-- ══════════════════════════════════════════════════
+       GALLERY CTA
+  ══════════════════════════════════════════════════ -->
+  <section class="gallery-cta-section" id="gallery">
+    <div class="container">
+      <div class="gallery-cta-inner">
+        <div class="gallery-cta-icon">📸</div>
+        <h2 class="gallery-cta-title">Koleksi Gambar Malam Citra Lagenda</h2>
+        <p class="gallery-cta-sub">
+          Majlis telah selesai dengan jayanya. Semak koleksi gambar kenangan malam bersejarah ini.
+        </p>
+        <a
+          href="https://drive.google.com/drive/folders/1sUV_zXvRqyWQfOhi2ttrQQxFvfd_QiQs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="gallery-cta-btn"
+        >
+          <span class="gallery-cta-btn-icon">📂</span>
+          Lihat Koleksi Gambar
+          <span class="gallery-cta-btn-arrow">→</span>
+        </a>
+        <p class="gallery-cta-note">Google Drive &nbsp;✦&nbsp; Akses percuma</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .gallery-cta-section {
+      background:
+        linear-gradient(160deg, rgba(26,10,0,0.97) 0%, rgba(107,0,0,0.6) 50%, rgba(26,10,0,0.97) 100%),
+        url("images/bg-pattern.jpg") center/cover no-repeat;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 2px solid rgba(201,168,76,0.3);
+      border-bottom: 2px solid rgba(201,168,76,0.3);
+    }
+    .gallery-cta-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .gallery-cta-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      display: block;
+      filter: drop-shadow(0 4px 16px rgba(201,168,76,0.5));
+      animation: float 4s ease-in-out infinite;
+    }
+    .gallery-cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: var(--gold-light);
+      text-shadow: 0 2px 20px rgba(201,168,76,0.4);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .gallery-cta-sub {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text-on-dark);
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .gallery-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #C9A84C 0%, #E8C97A 40%, #C9A84C 100%);
+      background-size: 200% auto;
+      color: #1A0A00;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 22px 52px;
+      border-radius: 60px;
+      border: none;
+      box-shadow:
+        0 0 0 4px rgba(201,168,76,0.25),
+        0 8px 40px rgba(201,168,76,0.4),
+        0 20px 60px rgba(0,0,0,0.5);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.4s ease;
+      animation: gallery-btn-pulse 3s ease-in-out infinite;
+    }
+    .gallery-cta-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      background-position: right center;
+      box-shadow:
+        0 0 0 6px rgba(201,168,76,0.35),
+        0 12px 50px rgba(201,168,76,0.6),
+        0 24px 70px rgba(0,0,0,0.6);
+    }
+    .gallery-cta-btn:active {
+      transform: translateY(-1px) scale(1.01);
+    }
+    .gallery-cta-btn-icon { font-size: 1.5rem; }
+    .gallery-cta-btn-arrow {
+      font-size: 1.3rem;
+      transition: transform 0.2s ease;
+    }
+    .gallery-cta-btn:hover .gallery-cta-btn-arrow { transform: translateX(5px); }
+    @keyframes gallery-btn-pulse {
+      0%, 100% { box-shadow: 0 0 0 4px rgba(201,168,76,0.25), 0 8px 40px rgba(201,168,76,0.4), 0 20px 60px rgba(0,0,0,0.5); }
+      50%       { box-shadow: 0 0 0 8px rgba(201,168,76,0.15), 0 8px 60px rgba(201,168,76,0.6), 0 20px 60px rgba(0,0,0,0.5); }
+    }
+    .gallery-cta-note {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-top: 24px;
+      text-transform: uppercase;
+    }
+    @media (max-width: 600px) {
+      .gallery-cta-btn { font-size: 1rem; padding: 18px 32px; gap: 10px; }
+    }
+  </style>
+
+  <!-- ══════════════════════════════════════════════════
        HERO
   ══════════════════════════════════════════════════ -->
   <section class="hero" id="hero">
